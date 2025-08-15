@@ -1,0 +1,35 @@
+* {
+  margin:0; padding:0;
+}
+body{
+  font-family: sans-serif ;
+  background-color: #dbe5f0;
+}
+
+.logo-card {
+  display: block;                  /* aをブロックレベル化＝箱になる */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0,0,0,.22);
+  padding: 12px;
+  margin: 16px auto;
+  text-align: center;
+  max-width: 480px;                /* 好きな幅に調整 */
+  color: inherit;                  /* 文字色を親に合わせる */
+  text-decoration: none;           /* 下線消し */
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.logo-card:hover,
+.logo-card:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0,0,0,.25);
+  outline: none;
+}
+.logo-caption { margin-top: 2px; font-size: .95rem; color: #333; }
+
+.logo-card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

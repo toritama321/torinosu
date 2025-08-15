@@ -1,0 +1,25 @@
+* {
+  margin:0; padding:0;
+}
+body{
+  font-family: sans-serif ;
+  background-color: #dbe5f0;
+}
+
+.pagebar{
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 0;
+  background: #2b2b2b;
+  color: #fff;
+  border-top: solid 5px #000000;
+}
+.aisatsu {
+  text-align: center;
+  color: #fff;
+}
+.sent{
+  text-align: center;
+  color: #fff;
+}
