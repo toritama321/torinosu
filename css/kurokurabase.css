@@ -1,0 +1,21 @@
+* {
+  margin:0; padding:0;
+}
+:root{
+  --profile-accent:#444444;   /* 見出し色 */
+}
+
+body{
+  font-family: sans-serif ;
+  background-color: #e6e6e6;
+}
+.modal__dialog{
+  background-color: #e6e6e6;
+}
+
+.profile__name-en{
+  color: var(--profile-muted); font-size: 1.2rem; font-weight:700;
+}
+.profile__name-kan{
+  color: rgb(133, 133, 196); font-size: 1.2rem; margin-bottom: 12px; font-weight:500;
+}

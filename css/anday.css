@@ -1,0 +1,52 @@
+* {
+  margin:0; padding:0;
+}
+:root{
+  --profile-accent:#3f3228;   /* 見出し色 */
+}
+
+body{
+  font-family: sans-serif ;
+  background-color: #ebe1d9;
+}
+.world-card .box-title {
+  font-size: 1.2em;
+  background: #3f3228;
+}
+
+#panel-chars{
+  background-image: linear-gradient(#f2edf5, #b9b0cc);
+}
+
+.char {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.char-img img { display: block; max-width: 100%; height: auto; }
+
+.char-labels { display: flex; flex-direction: column; align-items: center; }
+.char-label.line1 {
+  margin: 5px;
+  font-size: larger;
+  font-weight: 500; 
+}
+.char-label.line2 { font-size: 0.9em; }
+.char-name, .char-labels, .char-labels *{
+  white-space: normal;          /* ← nowrapをやめる */
+  overflow: visible;            /* ← 省略記号なども不要なら解除 */
+  text-overflow: clip;
+}
+
+.modal__dialog{
+  background-color: #ebe1d9;
+}
+
+#pTip{
+  font-style: italic;
+}

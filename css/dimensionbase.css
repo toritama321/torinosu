@@ -1,0 +1,14 @@
+* {
+  margin:0; padding:0;
+}
+:root{
+  --profile-accent:#272727;   /* 見出し色 */
+}
+
+body{
+  font-family: sans-serif ;
+  background-color: #e9e9e9;
+}
+.modal__dialog{
+  background-color: #e9e9e9;
+}
