@@ -58,35 +58,22 @@ function readySlot(el) {
   el.classList.remove("u-invis");   // 透明解除
 }
 
-async function loadFragment(slot, url, cacheKey) {
-  // 1) 即時描画（キャッシュがあれば）
-  const cached = sessionStorage.getItem(cacheKey);
-  if (cached) {
-    slot.innerHTML = cached;
-    hydrateLinks(slot);
-    readySlot(slot);
-  }
+// ヘッダー/フッター差し込み
+async function loadFragment(targetSel, path) {
+  const res = await fetch(joinBase(path));
+  const html = await res.text();
+  const el = document.querySelector(targetSel);
+  el.innerHTML = html;
 
-  // 2) ネットワークで最新化
-  try {
-    const res = await fetch(joinBase(url), { cache: "no-cache" });
-    const html = await res.text();
+  // 差し込んだ中の <img data-src> を補正して src に流し込む
+  el.querySelectorAll('img[data-src]').forEach(img => {
+    img.src = joinBase(img.dataset.src);
+  });
 
-    // 初回 or 内容更新時のみ差し替え（ミクロな再ペイントに抑える）
-    if (!cached || cached !== html) {
-      slot.innerHTML = html;
-      hydrateLinks(slot);
-      if (!slot.classList.contains("is-ready")) readySlot(slot);
-      sessionStorage.setItem(cacheKey, html);
-    }
-  } catch (e) {
-    console.error("include失敗:", url, e);
-    // キャッシュも無く、fetchも失敗 → 最低限のフォールバック
-    if (!cached) {
-      slot.innerHTML = `<div style="padding:12px;background:#fff;border-radius:8px">headerの読み込みに失敗しました</div>`;
-      readySlot(slot);
-    }
-  }
+  // a[data-href] なども同様に
+  el.querySelectorAll('a[data-href]').forEach(a => {
+    a.href = joinBase(a.dataset.href);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -120,4 +107,5 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
 
