@@ -12,10 +12,13 @@ const SITE_BASE = (() => {
 
 function joinBase(path) {
   if (!path) return '';
-  // すでに絶対URL or //CDN ならそのまま
+  // すでに絶対URL or プロトコル相対ならそのまま
   if (/^(https?:)?\/\//i.test(path)) return path;
-  return SITE_BASE + String(path).replace(/^\/+/, ''); // /torinosu/ + 相対
+  // URLで安全に解決（"./", "../", "/torinosu/xxx" もOK）
+  const abs = new URL(path, location.origin + SITE_BASE);
+  return abs.href; // fetch/href/src どれでも使える
 }
+
 
 function currentPage() {
   const url = new URL(window.location.href);
@@ -107,5 +110,6 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
 
 
