@@ -1,10 +1,20 @@
-// main.js
-const SITE_BASE = document.documentElement.dataset.base || "";
+// === どこから読んでも /torinosu/ を基準にできる検出ロジック ===
+const SITE_BASE = (() => {
+  // <html data-base="/torinosu/"> と明示されてたらそれを使う
+  const htmlBase = document.documentElement.dataset.base;
+  const norm = s => (s.startsWith('/') ? s : '/' + s).replace(/\/?$/, '/');
+  if (htmlBase) return norm(htmlBase);
+
+  // それが無ければ location.pathname から /<repo>/ を推定（/torinosu/）
+  const segs = location.pathname.split('/').filter(Boolean);
+  return segs.length ? `/${segs[0]}/` : '/';
+})();
 
 function joinBase(path) {
-  const b = SITE_BASE.endsWith("/") ? SITE_BASE.slice(0, -1) : SITE_BASE;
-  const p = path.startsWith("/") ? path.slice(1) : path;
-  return b ? `${b}/${p}` : p;
+  if (!path) return '';
+  // すでに絶対URL or //CDN ならそのまま
+  if (/^(https?:)?\/\//i.test(path)) return path;
+  return SITE_BASE + String(path).replace(/^\/+/, ''); // /torinosu/ + 相対
 }
 
 function currentPage() {
@@ -110,3 +120,4 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
