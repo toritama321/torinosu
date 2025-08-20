@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"nina",
-            "img":"../img/andei/nina.webp",
+            "img":"../img/Andei/Nina.webp",
             "name":"α-27",
             "nameEn":"ニーナ",
             "sex":"女",
@@ -204,3 +204,4 @@
     }
   ]
 }
+
