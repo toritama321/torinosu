@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"tsuduru",
-            "img":"../img/ryukoto/tuduru.webp",
+            "img":"../img/Ryukoto/Tuduru.webp",
             "name":"佐野 綴",
             "nameEn":"Sano Tsuduru",
             "nameGod":"",
@@ -43,7 +43,7 @@
         },
         {
             "id":"violeta",
-            "img":"../img/ryukoto/vioretta.webp",
+            "img":"../img/Ryukoto/Vioretta.webp",
             "name":"ヴィオレッタ",
             "nameEn":"Violeta",
             "nameGod":"フィニス",
@@ -85,7 +85,7 @@
         },
         {
             "id":"kuto",
-            "img":"../img/ryukoto/kuto.webp",
+            "img":"../img/Ryukoto/Kuto.webp",
             "name":"田村 空斗",
             "nameEn":"Tamura Kuto",
             "nameGod":"",
@@ -123,7 +123,7 @@
         },
         {
             "id":"fray",
-            "img":"../img/ryukoto/furei.webp",
+            "img":"../img/Ryukoto/Furei.webp",
             "name":"フレイ",
             "nameEn":"Fray",
             "nameGod":"フォティヤ",
@@ -158,7 +158,7 @@
         },
         {
             "id":"riri",
-            "img":"../img/ryukoto/riri.webp",
+            "img":"../img/Ryukoto/Riri.webp",
             "name":"藍園 璃々",
             "nameEn":"Aizono Riri",
             "nameGod":"",
@@ -197,7 +197,7 @@
         },
         {
             "id":"mimi",
-            "img":"../img/ryukoto/mimi.webp",
+            "img":"../img/Ryukoto/Mimi.webp",
             "name":"ミミ",
             "nameEn":"Mimi",
             "nameGod":"ヘリクス",
@@ -230,7 +230,7 @@
         },
         {
             "id":"subaru",
-            "img":"../img/ryukoto/subaru.webp",
+            "img":"../img/Ryukoto/Subaru.webp",
             "name":"湊谷 朱晴",
             "nameEn":"Minatani Subaru",
             "nameGod":"",
@@ -265,7 +265,7 @@
         },
         {
             "id":"armillary",
-            "img":"../img/ryukoto/amirari.webp",
+            "img":"../img/Ryukoto/Amirari.webp",
             "name":"アーミラリ",
             "nameEn":"Armillary",
             "nameGod":"シュテルン",
@@ -300,7 +300,7 @@
         },
         {
             "id":"mito",
-            "img":"../img/ryukoto/mito.webp",
+            "img":"../img/Ryukoto/Mito.webp",
             "name":"漆舘 海兎",
             "nameEn":"Urushidate Mito",
             "nameGod":"",
@@ -339,7 +339,7 @@
         },
         {
             "id":"felimare",
-            "img":"../img/ryukoto/ferimare.webp",
+            "img":"../img/Ryukoto/Ferimare.webp",
             "name":"フェリマレ",
             "nameEn":"Felimare",
             "nameGod":"バレーナ",
@@ -379,7 +379,7 @@
       "members": [
         {
             "id":"mika",
-            "img":"../img/ryukoto/mika.webp",
+            "img":"../img/Ryukoto/Mika.webp",
             "name":"早乙女 美華",
             "nameEn":"Saotome Mika",
             "nameGod":"",
@@ -416,7 +416,7 @@
         },
         {
             "id":"flena",
-            "img":"../img/ryukoto/furena.webp",
+            "img":"../img/Ryukoto/Furena.webp",
             "name":"フレーナ",
             "nameEn":"Flena",
             "nameGod":"イニシウム",
@@ -450,7 +450,7 @@
         },
         {
             "id":"mia",
-            "img":"../img/ryukoto/mia.webp",
+            "img":"../img/Ryukoto/Mia.webp",
             "name":"日暮 美亜",
             "nameEn":"Higure Mia",
             "nameGod":"",
@@ -485,7 +485,7 @@
         },
         {
             "id":"lyon",
-            "img":"../img/ryukoto/riyon.webp",
+            "img":"../img/Ryukoto/Riyon.webp",
             "name":"リヨン",
             "nameEn":"Lyon",
             "nameGod":"セルウィトゥース",
@@ -517,7 +517,7 @@
         },
         {
             "id":"hiroki",
-            "img":"../img/ryukoto/hiroki.webp",
+            "img":"../img/Ryukoto/Hiroki.webp",
             "name":"四元 裕貴",
             "nameEn":"Yotsumoto Hiroki",
             "nameGod":"",
@@ -554,7 +554,7 @@
         },
         {
             "id":"dread",
-            "img":"../img/ryukoto/doredo.webp",
+            "img":"../img/Ryukoto/Doredo.webp",
             "name":"ドレド",
             "nameEn":"Dread",
             "nameGod":"カーケス",
@@ -590,7 +590,7 @@
         },
         {
             "id":"sana",
-            "img":"../img/ryukoto/sana.webp",
+            "img":"../img/Ryukoto/Sana.webp",
             "name":"御代川 咲菜",
             "nameEn":"Miyokawa Sana",
             "nameGod":"",
@@ -624,7 +624,7 @@
         },
         {
             "id":"plage",
-            "img":"../img/ryukoto/puraju.webp",
+            "img":"../img/Ryukoto/Puraju.webp",
             "name":"プラージュ",
             "nameEn":"Plage",
             "nameGod":"アエロリット",
@@ -658,7 +658,7 @@
         },
         {
             "id":"torame",
-            "img":"../img/ryukoto/torame.webp",
+            "img":"../img/Ryukoto/Torame.webp",
             "name":"漆舘虎雨",
             "nameEn":"Urushidate Torame",
             "nameGod":"",
@@ -697,7 +697,7 @@
         },
         {
             "id":"sinensis",
-            "img":"../img/ryukoto/sinensisu.webp",
+            "img":"../img/Ryukoto/Sinensisu.webp",
             "name":"シネンシス",
             "nameEn":"Sinensis",
             "nameGod":"パラシティ",
@@ -737,7 +737,7 @@
       "members": [
         {
             "id":"shin",
-            "img":"../img/ryukoto/sin.webp",
+            "img":"../img/Ryukoto/Sin.webp",
             "name":"小黒 真",
             "nameEn":"Oguro Shin",
             "nameGod":"",
@@ -771,7 +771,7 @@
         },
         {
             "id":"olbis",
-            "img":"../img/ryukoto/orubisu.webp",
+            "img":"../img/Ryukoto/Orubisu.webp",
             "name":"オルビス",
             "nameEn":"Olbis",
             "nameGod":"グラティア",
@@ -805,7 +805,7 @@
         },
         {
             "id":"omnis",
-            "img":"../img/ryukoto/omunisu.webp",
+            "img":"../img/Ryukoto/Omunisu.webp",
             "name":"オムニス",
             "nameEn":"Omnis",
             "nameGod":"",
@@ -848,7 +848,7 @@
         },
         {
             "id":"welan",
-            "img":"../img/ryukoto/weran.webp",
+            "img":"../img/Ryukoto/Weran.webp",
             "name":"ウェラン",
             "nameEn":"Welan",
             "nameGod":"",
@@ -885,7 +885,7 @@
         },
         {
             "id":"nalew",
-            "img":"../img/ryukoto/naryu.webp",
+            "img":"../img/Ryukoto/Naryu.webp",
             "name":"ナリュウ",
             "nameEn":"Nalew",
             "nameGod":"",
