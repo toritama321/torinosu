@@ -53,6 +53,7 @@ console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 (async function renderCharactersByDataAttr(){
   const sections = document.querySelectorAll('[data-json]');
   if (!sections.length) return;
+  console.log(sections);
 
   // 小ヘルパー
   const esc = s => (s ?? '').toString()
@@ -397,4 +398,5 @@ function openFromInitialHash() {
 }
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
+
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
