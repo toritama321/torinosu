@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"sol",
-            "img":"img/Draco/soru.webp",
+            "img":"../img/Draco/Soru.webp",
             "name":"ソール",
             "nameEn":"Sol",
             "sex":"男",
@@ -47,7 +47,7 @@
         },
         {
             "id":"housenka",
-            "img":"../img/Draco/housenka.webp",
+            "img":"../img/Draco/Housenka.webp",
             "name":"鳳仙花",
             "nameEn":"Housenka",
             "sex":"女",
@@ -83,7 +83,7 @@
         },
         {
             "id":"flare",
-            "img":"../img/Draco/furea.webp",
+            "img":"../img/Draco/Furea.webp",
             "name":"フレア",
             "nameEn":"Flare",
             "sex":"男",
@@ -123,7 +123,7 @@
         },
         {
             "id":"linha",
-            "img":"../img/Draco/rinya.webp",
+            "img":"../img/Draco/Rinya.webp",
             "name":"リーニャ",
             "nameEn":"Linha",
             "sex":"男",
@@ -166,7 +166,7 @@
         },
         {
             "id":"aqua",
-            "img":"../img/Draco/akua.webp",
+            "img":"../img/Draco/Akua.webp",
             "name":"アクア",
             "nameEn":"Aqua",
             "sex":"女",
@@ -202,7 +202,7 @@
         },
         {
             "id":"meridies",
-            "img":"../img/Draco/meridiesu.webp",
+            "img":"../img/Draco/Meridiesu.webp",
             "name":"メリディエス",
             "nameEn":"Meridies",
             "sex":"女",
@@ -238,7 +238,7 @@
         },
         {
             "id":"herba",
-            "img":"../img/Draco/heruba.webp",
+            "img":"../img/Draco/Heruba.webp",
             "name":"ヘルバ",
             "nameEn":"Herba",
             "sex":"女",
@@ -280,7 +280,7 @@
       "members": [
         {
             "id":"dine",
-            "img":"../img/Draco/dine.webp",
+            "img":"../img/Draco/Dine.webp",
             "name":"ディーネ",
             "nameEn":"Dine",
             "sex":"女",
@@ -322,7 +322,7 @@
         },
         {
             "id":"caerula",
-            "img":"../img/Draco/kaerura.webp",
+            "img":"../img/Draco/Kaerura.webp",
             "name":"カエルラ",
             "nameEn":"Caerula",
             "sex":"男",
@@ -358,7 +358,7 @@
         },
         {
             "id":"niveus",
-            "img":"../img/Draco/nibeusu.webp",
+            "img":"../img/Draco/Nibeusu.webp",
             "name":"ニベウス",
             "nameEn":"Niveus",
             "sex":"男",
@@ -400,7 +400,7 @@
         },
         {
             "id":"kaede",
-            "img":"../img/Draco/kaede.webp",
+            "img":"../img/Draco/Kaede.webp",
             "name":"カエデ",
             "nameEn":"Kaede",
             "sex":"男",
@@ -441,7 +441,7 @@
       "members": [
         {
             "id":"unus",
-            "img":"../img/Draco/yunusu.webp",
+            "img":"../img/Draco/Yunusu.webp",
             "name":"ユヌス",
             "nameEn":"Unus",
             "sex":"男",
@@ -480,7 +480,7 @@
         },
         {
             "id":"nihil",
-            "img":"../img/Draco/nihiru.webp",
+            "img":"../img/Draco/Nihiru.webp",
             "name":"ニヒル",
             "nameEn":"Nihil",
             "sex":"男",
@@ -521,7 +521,7 @@
         },
         {
             "id":"dahlia",
-            "img":"../img/Draco/daria.webp",
+            "img":"../img/Draco/Daria.webp",
             "name":"ダリア",
             "nameEn":"Dahlia",
             "sex":"女",
@@ -558,7 +558,7 @@
         },
         {
             "id":"lotus",
-            "img":"../img/Draco/rotasu.webp",
+            "img":"../img/Draco/Rotasu.webp",
             "name":"ロータス",
             "nameEn":"Rotus",
             "sex":"男",
@@ -596,7 +596,7 @@
         },
         {
             "id":"admirari",
-            "img":"../img/Draco/adomirari.webp",
+            "img":"../img/Draco/Adomirari.webp",
             "name":"アドミラリ",
             "nameEn":"Admirari",
             "sex":"女",
@@ -638,7 +638,7 @@
       "members": [
         {
             "id":"viola",
-            "img":"../img/Draco/biora.webp",
+            "img":"../img/Draco/Biora.webp",
             "name":"ビオラ",
             "nameEn":"Viola",
             "sex":"女",
@@ -675,7 +675,7 @@
         },
         {
             "id":"viool",
-            "img":"../img/Draco/bioru.webp",
+            "img":"../img/Draco/Bioru.webp",
             "name":"ビオル",
             "nameEn":"Viool",
             "sex":"女",
@@ -712,7 +712,7 @@
         },
         {
             "id":"mer",
-            "img":"../img/Draco/meru.webp",
+            "img":"../img/Draco/Meru.webp",
             "name":"メル",
             "nameEn":"Mer",
             "sex":"女",
@@ -730,7 +730,7 @@
                       "｢推しの格好してると思うと興奮する｣",
                       "｢ケーキ食べたい…でも太っちゃう…でも食べたい…｣",
                       "｢あーあ小さい頃のキュールは素直で可愛かったのにな〜｣",
-                      "｢ウィッグ洗ったなら言ってよバカ〜！！‪💢｣"
+                      "｢ウィッグ洗ったなら言ってよバカ〜！！‪｣"
                     ],
             "T1":"",
             "N1":[
@@ -748,7 +748,7 @@
         },
         {
             "id":"cure",
-            "img":"../img/Draco/kyuru.webp",
+            "img":"../img/Draco/Kyuru.webp",
             "name":"キュール",
             "nameEn":"Cure",
             "sex":"男",
@@ -784,7 +784,7 @@
         },
         {
             "id":"seirios",
-            "img":"../img/Draco/seiriosu.webp",
+            "img":"../img/Draco/Seiriosu.webp",
             "name":"セイリオス",
             "nameEn":"Seirios",
             "sex":"男",
@@ -825,7 +825,7 @@
       "members": [
         {
             "id":"wer",
-            "img":"../img/Draco/weru.webp",
+            "img":"../img/Draco/Weru.webp",
             "name":"ウェール",
             "nameEn":"Wer",
             "sex":"女",
@@ -862,7 +862,7 @@
         },
         {
             "id":"neige",
-            "img":"../img/Draco/neju.webp",
+            "img":"../img/Draco/Neju.webp",
             "name":"ネージュ",
             "nameEn":"Neige",
             "sex":"女",
@@ -897,7 +897,7 @@
         },
         {
             "id":"olst",
-            "img":"../img/Draco/orusuto.webp",
+            "img":"../img/Draco/Orusuto.webp",
             "name":"オルスト",
             "nameEn":"Olst",
             "sex":"男",
@@ -934,7 +934,7 @@
         },
         {
             "id":"wamon",
-            "img":"../img/Draco/wamon.webp",
+            "img":"../img/Draco/Wamon.webp",
             "name":"ワモン",
             "nameEn":"Wamon",
             "sex":"男",
@@ -972,7 +972,7 @@
         },
         {
             "id":"phobia",
-            "img":"../img/Draco/fobia.webp",
+            "img":"../img/Draco/Fobia.webp",
             "name":"フォビア",
             "nameEn":"Phobia",
             "sex":"女",
@@ -1008,4 +1008,3 @@
     }
   ]
 }
-
