@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"sol",
-            "img":"../img/Draco/soru.webp",
+            "img":"img/Draco/soru.webp",
             "name":"ソール",
             "nameEn":"Sol",
             "sex":"男",
@@ -1008,3 +1008,4 @@
     }
   ]
 }
+
