@@ -41,7 +41,7 @@ function buildHref(item) {
   const page  = slugWorldToPage(world);
   const id    = encodeURIComponent(item.id || item.name);
   // ハッシュは1個しか使えないので、"&"でパラメータを繋ぐ
-  return `/torinosu//world/${page}.html#tab=chars&char=${id}`;
+  return `/torinosu/world/${page}.html#tab=chars&char=${id}`;
 }
 
 // タグ生成　########################################################################
@@ -278,5 +278,6 @@ function refreshLazy() {
     .forEach(img => io ? io.observe(img) : hydrateImg(img));
 
 }
+
 
 
