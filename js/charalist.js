@@ -41,6 +41,7 @@ function buildHref(item) {
   const page  = slugWorldToPage(world);
   const id    = encodeURIComponent(item.id || item.name);
   // ハッシュは1個しか使えないので、"&"でパラメータを繋ぐ
+  console.log('ジャンプ先URL：',`/torinosu/world/${page}.html#tab=chars&char=${id}`);
   return `/torinosu/world/${page}.html#tab=chars&char=${id}`;
 }
 
@@ -278,6 +279,7 @@ function refreshLazy() {
     .forEach(img => io ? io.observe(img) : hydrateImg(img));
 
 }
+
 
 
 
