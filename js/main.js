@@ -50,7 +50,14 @@ function hydrateLinks(root) {
 
 // ヘッダー、フッター挿入　##################################################################
 async function loadFragment(slot, url, cacheKey) {
-  // 1) 即時描画（キャッシュがあれば）
+  // 直前のリクエストを中断
+  const last = _fragmentLoads.get(slot);
+  if (last) last.abort?.();
+
+  const ctrl = new AbortController();
+  _fragmentLoads.set(slot, ctrl);
+
+  // 即時描画（キャッシュがあれば）
   const cached = sessionStorage.getItem(cacheKey);
   if (cached) {
     slot.innerHTML = cached;
@@ -58,7 +65,7 @@ async function loadFragment(slot, url, cacheKey) {
     readySlot(slot);
   }
 
-  // 2) ネットワークで最新化
+  // ネットワークで最新化
   try {
     const res = await fetch(joinBase(url), { cache: "no-cache" });  // header.html を /<torinosu>/header.html に
     const html = await res.text();
