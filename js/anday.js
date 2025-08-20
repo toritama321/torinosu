@@ -93,8 +93,8 @@ function withBase(path) {
           btn.className = 'char';
           btn.type = 'button';
 
-          // 画像だけは階層補正
-          const fixed = { ...m, img: resolveFromDoc(m.img || '') };
+          // 画像階層補正
+          const fixed = { ...m, img: withBase(m.img || '') };
           btn._data = fixed;
 
           btn.innerHTML = `
@@ -157,7 +157,6 @@ function createCharButton(m) {
   img.src = withBase(m.img);
   img.alt = m.name || '';
   shell.appendChild(img);
-  //console.log('imgURL:',img.src);
 
   // ラベル2段
   const labels = document.createElement('span');
@@ -368,6 +367,7 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
 
