@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"raven",
-            "img":"../img/mm/reibun.webp",
+            "img":"../img/MM/Reibun.webp",
             "name":"レイヴン",
             "nameEn":"Raven",
             "sex":"男",
@@ -44,7 +44,7 @@
         },
         {
             "id":"velvety",
-            "img":"../img/mm/berubeti.webp",
+            "img":"../img/MM/Berubeti.webp",
             "name":"ベルベティ",
             "nameEn":"Velvety",
             "sex":"女",
@@ -83,7 +83,7 @@
         },
         {
             "id":"calu",
-            "img":"../img/mm/karu.webp",
+            "img":"../img/MM/Karu.webp",
             "name":"カルー",
             "nameEn":"Calu",
             "sex":"男",
@@ -121,7 +121,7 @@
         },
         {
             "id":"octo",
-            "img":"../img/mm/okuto.webp",
+            "img":"../img/MM/Okuto.webp",
             "name":"オクト",
             "nameEn":"Octo",
             "sex":"女",
@@ -159,7 +159,7 @@
         },
         {
             "id":"araneae",
-            "img":"../img/mm/aranea.webp",
+            "img":"../img/MM/Aranea.webp",
             "name":"アラネア",
             "nameEn":"Araneae",
             "sex":"女",
@@ -204,7 +204,7 @@
       "members": [
         {
             "id":"rissete",
-            "img":"../img/mm/rizetto.webp",
+            "img":"../img/MM/Rizetto.webp",
             "name":"リゼット・フラヴィニー",
             "nameEn":"Risette Flavigny",
             "sex":"女",
@@ -240,7 +240,7 @@
         },
         {
             "id":"angele",
-            "img":"../img/mm/anjeru.webp",
+            "img":"../img/MM/Anjeru.webp",
             "name":"アンジェル・フラヴィニー",
             "nameEn":"Angele Flavigny",
             "sex":"女",
@@ -277,7 +277,7 @@
         },
         {
             "id":"nebiros",
-            "img":"../img/mm/nebirosu.webp",
+            "img":"../img/MM/Nebirosu.webp",
             "name":"ネビロス",
             "nameEn":"Nebiros",
             "sex":"男",
@@ -318,7 +318,7 @@
       "members": [
         {
             "id":"mylliarayatte",
-            "img":"../img/mm/MMRogo.webp",
+            "img":"../img/MM/MMRogo.webp",
             "name":"ミルリエラヤート",
             "nameEn":"Mylliarayatte",
             "sex":"なし",
