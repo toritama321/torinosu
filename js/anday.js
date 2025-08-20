@@ -94,8 +94,8 @@ function withBase(path) {
           btn.type = 'button';
 
           // 画像だけは階層補正
-          const fixed = { ...m, img: jbase(m.img || '') };
-          btn._data = fixed; // ← これがミソ（全部持たせる）
+          const fixed = { ...m, img: resolveFromDoc(m.img || '') };
+          btn._data = fixed;
 
           btn.innerHTML = `
             <span class="char-img">
@@ -368,6 +368,7 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
 
