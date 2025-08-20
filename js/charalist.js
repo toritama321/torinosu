@@ -1,13 +1,25 @@
+// ベースパス（リポ名に合わせる）
+const BASE_PATH = '/torinosu/';
+
+// 安全にくっつける関数
+function withBase(path) {
+  if (!path) return '';
+  // すでに http:// や /torinosu/ で始まってたらそのまま
+  if (/^(https?:|\/torinosu\/)/.test(path)) return path;
+  // ../ を消して BASE_PATH にくっつける
+  return BASE_PATH + path.replace(/^(\.\/|\.\.\/)+/, '');
+}
+
 // 設定　########################################################################
 // JSONファイル
 const JSON_SOURCES = [
-  "../data/dracochara.json",
-  "../data/kurochara.json",
-  "../data/ryukotochara.json",
-  "../data/andaychara.json",
-  "../data/mmchara.json",
-  "../data/siryouchara.json",
-  "../data/dimensionchara.json"
+  "data/dracochara.json",
+  "data/kurochara.json",
+  "data/ryukotochara.json",
+  "data/andaychara.json",
+  "data/mmchara.json",
+  "data/siryouchara.json",
+  "data/dimensionchara.json"
 ];
 
 // ページファイル名 のマップ（必要に応じて追加）
@@ -129,8 +141,8 @@ async function loadAll() {
     else items = j.chars || j.characters || j.items || j.list || j.data || [];
 
     return items.map(raw => {
-      const name = raw.name ?? raw.title ?? "";
-      const img  = raw.img ?? raw.image ?? "";
+      const name = raw.name ?? "";
+      const img  = withBase(raw.img || '') ?? "";
       const href = raw.href ? raw.href : `./${raw.id || name}.html`;
       const tags = Array.isArray(raw.tags) ? raw.tags : [];
       const groupTitle = raw.group || "";
@@ -264,4 +276,5 @@ function retryImg(img) {
 function refreshLazy() {
   document.querySelectorAll('.char-card:not(.hidden) img[data-src]:not([data-hydrated="1"])')
     .forEach(img => io ? io.observe(img) : hydrateImg(img));
+
 }
