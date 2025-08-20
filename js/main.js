@@ -50,33 +50,21 @@ function hydrateLinks(root) {
 
 // ヘッダー、フッター挿入　##################################################################
 async function loadFragment(slot, url, cacheKey) {
-  // 即時描画（キャッシュがあれば）
-  const cached = sessionStorage.getItem(cacheKey);
-  if (cached) {
-    slot.innerHTML = cached;
-    hydrateLinks(slot);
-    readySlot(slot);
-  }
-
   // ネットワークで最新化
   try {
     const res = await fetch(joinBase(url), { cache: "no-cache" });  // header.html を /<torinosu>/header.html に
     const html = await res.text();
 
     // 初回 or 内容更新時のみ差し替え（ミクロな再ペイントに抑える）
-    if (!cached || cached !== html) {
-      slot.innerHTML = html;
-      hydrateLinks(slot);
-      if (!slot.classList.contains("is-ready")) readySlot(slot);
-      sessionStorage.setItem(cacheKey, html);
-    }
+    slot.innerHTML = html;
+    hydrateLinks(slot);
+    if (!slot.classList.contains("is-ready")) readySlot(slot);
+    sessionStorage.setItem(cacheKey, html);
   } catch (e) {
     console.error("include失敗:", url, e);
-    // キャッシュも無く、fetchも失敗 → 最低限のフォールバック
-    if (!cached) {
-      slot.innerHTML = `<div style="padding:12px;background:#fff;border-radius:8px">headerの読み込みに失敗しました</div>`;
-      readySlot(slot);
-    }
+    // fetch失敗 → 最低限のフォールバック
+    slot.innerHTML = `<div style="padding:12px;background:#fff;border-radius:8px">headerの読み込みに失敗しました</div>`;
+    readySlot(slot);
   }
 }
 
@@ -126,4 +114,5 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
 
