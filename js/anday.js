@@ -86,6 +86,12 @@ console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
           const fixed = { ...m, img: jbase(m.img || '') };
           btn._data = fixed; // ← これがミソ（全部持たせる）
 
+          btn.innerHTML = `
+            <span class="char-img">
+              <img loading="lazy" src="${esc(fixed.img)}" alt="${esc(m.name || '')}">
+            </span>
+            <span class="char-name">${esc(m.name || '')}</span>
+          `;
           grid.appendChild(btn);
 
           if (m.crop) {
@@ -349,4 +355,5 @@ function openFromInitialHash() {
 }
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
+
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
