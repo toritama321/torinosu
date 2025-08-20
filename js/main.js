@@ -1,39 +1,39 @@
-// === 検出ロジック ===
-const SITE_BASE = (() => {
-  // <html data-base="/torinosu/"> と明示されてたらそれを使う
-  const htmlBase = document.documentElement.dataset.base;
-  const norm = s => (s.startsWith('/') ? s : '/' + s).replace(/\/?$/, '/');
-  if (htmlBase) return norm(htmlBase);
+// GitHub Pagesでは、ルートが「https://...github.io/」になる。
+// ルート相対パスを書く場合は、/<リポジトリ名>/を先頭につける必要がある。
 
-  // それが無ければ location.pathname から /<repo>/ を推定（/torinosu/）
-  const segs = location.pathname.split('/').filter(Boolean);
-  return segs.length ? `/${segs[0]}/` : '/';
-})();
 
-// 相対パスを絶対パスにする
+// html要素からdata-baseを取得
+const SITE_BASE = document.documentElement.dataset.base || "";
+
+// パス組立
 function joinBase(path) {
-  if (!path) return '';
-  // すでに絶対URL or プロトコル相対ならそのまま
-  if (/^(https?:)?\/\//i.test(path)) return path;
-  // URLで安全に解決（"./", "../", "/torinosu/xxx" もOK）
-  const abs = new URL(path, location.origin + SITE_BASE);
-  return abs.href;
+  const b = SITE_BASE.endsWith("/") ? SITE_BASE.slice(0, -1) : SITE_BASE; // data-base末尾スラッシュを取り除く
+  const p = path.startsWith("/") ? path.slice(1) : path;  // 引数先頭スラッシュを取り除く
+  return b ? `${b}/${p}` : p; // 「<data-base>/<引数>」を返す
 }
 
-
+// 現在ページのURL取得
 function currentPage() {
-  const url = new URL(window.location.href);
+  const url = new URL(window.location.href);  // 現在ページのURL取得
+
+  // split=指定区切り文字で新配列化　.fillter()=指定条件のもののみ取り出す　.pop=最後の要素を取り除く
+  // toLowerCase=文字列小文字化
   return (url.pathname.split("/").filter(Boolean).pop() || "index.html").toLowerCase();
 }
 
+// 「data-」系のパスを設定
 function hydrateLinks(root) {
+  // querySelectorAll("[data-href]")で、data-href属性を持つa要素をすべて取得
   root.querySelectorAll("[data-href]").forEach(a => {
+    // data-hrefを相対パスに組み立て、href属性に追加
     a.setAttribute("href", joinBase(a.getAttribute("data-href")));
   });
+
   // 画像（src）
   root.querySelectorAll("[data-src]").forEach(img=>{
     img.setAttribute("src", joinBase(img.getAttribute("data-src")));
   });
+
   // レスポンシブ画像（srcset）
   root.querySelectorAll("[data-srcset]").forEach(el=>{
     el.setAttribute("srcset",
@@ -49,6 +49,41 @@ function hydrateLinks(root) {
   });
 }
 
+// ヘッダー、フッター挿入　##################################################################
+async function loadFragment(targetSel, path) {
+  const res = await fetch(joinBase(path));        // header.html を /<data-set>/header.html に
+  if (!res.ok) throw new Error(`fetch失敗: ${path}`);
+  const html = await res.text();
+
+  const el = document.querySelector(targetSel);
+  el.innerHTML = html;                            // 共通パーツを素で挿入
+
+  // ここから“中身の相対パス”を補正して実体化（hydrate）
+  // 画像: <img data-src="img/foo.webp"> を <img src="/torinosu/img/foo.webp"> に変換
+  el.querySelectorAll('img[data-src]').forEach(img => {
+    img.src = joinBase(img.dataset.src);
+  });
+
+  // リンク: <a data-href="links.html"> → <a href="/torinosu/links.html">
+  el.querySelectorAll('a[data-href]').forEach(a => {
+    a.href = joinBase(a.dataset.href);
+  });
+}
+
+// ヘッダー、フッター読み込み
+document.addEventListener("DOMContentLoaded", async () => {
+  const headerSlot = document.querySelector('[data-include="header.html"]');
+  const footerSlot = document.querySelector('[data-include="footer.html"]');
+
+  const jobs = [];
+  if (headerSlot) jobs.push(loadFragment(headerSlot, "header.html"));
+  if (footerSlot) jobs.push(loadFragment(footerSlot, "footer.html"));
+
+  await Promise.all(jobs);
+  highlightActiveNav();
+});
+
+// ヘッダーメニューの選択中ハイライト
 function highlightActiveNav() {
   const page = currentPage();
   document.querySelectorAll("nav a[href]").forEach(a => {
@@ -61,36 +96,6 @@ function readySlot(el) {
   el.classList.add("is-ready");     // visibility: visible
   el.classList.remove("u-invis");   // 透明解除
 }
-
-// ヘッダー/フッター差し込み
-async function loadFragment(targetSel, path) {
-  const res = await fetch(joinBase(path));
-  const html = await res.text();
-  const el = document.querySelector(targetSel);
-  el.innerHTML = html;
-
-  // 差し込んだ中の <img data-src> を補正して src に流し込む
-  el.querySelectorAll('img[data-src]').forEach(img => {
-    img.src = joinBase(img.dataset.src);
-  });
-
-  // a[data-href] なども同様に
-  el.querySelectorAll('a[data-href]').forEach(a => {
-    a.href = joinBase(a.dataset.href);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const headerSlot = document.querySelector('[data-include="header.html"]');
-  const footerSlot = document.querySelector('[data-include="footer.html"]');
-
-  const jobs = [];
-  if (headerSlot) jobs.push(loadFragment(headerSlot, "header.html", "frag:header"));
-  if (footerSlot) jobs.push(loadFragment(footerSlot, "footer.html", "frag:footer"));
-
-  await Promise.all(jobs);
-  highlightActiveNav();
-});
 
 
 // スクロールボタンの表示・非表示###########################################################
@@ -111,7 +116,3 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
-
-
-
-
