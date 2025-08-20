@@ -96,6 +96,7 @@ function withBase(path) {
           // 画像階層補正
           const fixed = { ...m, img: withBase(m.img || '') };
           btn._data = fixed;
+          console.log({ ...m, img: withBase(m.img || '') });
 
           btn.innerHTML = `
             <span class="char-img">
@@ -367,6 +368,7 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
 
