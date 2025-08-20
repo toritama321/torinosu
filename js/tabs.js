@@ -53,12 +53,12 @@ console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 (async function renderCharactersByDataAttr(){
   const sections = document.querySelectorAll('[data-json]');
   if (!sections.length) return;
-  console.log(sections);
 
   // 小ヘルパー
   const esc = s => (s ?? '').toString()
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const jbase = (p) => (window.joinBase ? joinBase(p) : p);
+  console.log('url:',jbase)
 
   for (const root of sections) {
     const file = root.dataset.json;                // ← HTMLで指定したJSON
@@ -400,3 +400,4 @@ function openFromInitialHash() {
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
