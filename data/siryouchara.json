@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"annes",
-            "img":"../img/shiryou/annes.webp",
+            "img":"../img/Shiryou/Annes.webp",
             "name":"アンネス",
             "nameEn":"Annes",
             "height":"160cm",
@@ -25,7 +25,7 @@
         },
         {
             "id":"belly",
-            "img":"../img/shiryou/belly.webp",
+            "img":"../img/Shiryou/Belly.webp",
             "name":"ベリー",
             "nameEn":"Belly",
             "height":"152cm",
@@ -45,7 +45,7 @@
         },
         {
             "id":"delight",
-            "img":"../img/shiryou/delight.webp",
+            "img":"../img/Shiryou/Delight.webp",
             "name":"デライト",
             "nameEn":"Delight",
             "height":"150cm",
@@ -65,7 +65,7 @@
         },
         {
             "id":"eliza",
-            "img":"../img/shiryou/eliza.webp",
+            "img":"../img/Shiryou/Eliza.webp",
             "name":"エリザ",
             "nameEn":"Eliza",
             "height":"153cm",
@@ -85,7 +85,7 @@
         },
         {
             "id":"kalanch",
-            "img":"../img/shiryou/siryourogo.webp",
+            "img":"../img/Shiryou/Siryourogo.webp",
             "name":"カランチ",
             "nameEn":"Kalanch",
             "height":"158cm",
@@ -105,7 +105,7 @@
         },
         {
             "id":"lila",
-            "img":"../img/shiryou/lila.webp",
+            "img":"../img/Shiryou/Lila.webp",
             "name":"ライラ",
             "nameEn":"Lila",
             "height":"155cm",
@@ -125,7 +125,7 @@
         },
         {
             "id":"orie",
-            "img":"../img/shiryou/siryourogo.webp",
+            "img":"../img/Shiryou/SiryouRogo.webp",
             "name":"オリエ",
             "nameEn":"Orie",
             "height":"154cm",
@@ -145,7 +145,7 @@
         },
         {
             "id":"quartz",
-            "img":"../img/shiryou/quartz.webp",
+            "img":"../img/Shiryou/Quartz.webp",
             "name":"クオーツ",
             "nameEn":"Quartz",
             "height":"165cm",
@@ -165,7 +165,7 @@
         },
         {
             "id":"raine",
-            "img":"../img/shiryou/raine.webp",
+            "img":"../img/Shiryou/Raine.webp",
             "name":"レーヌ",
             "nameEn":"Raine",
             "height":"152cm",
@@ -185,7 +185,7 @@
         },
         {
             "id":"unchl",
-            "img":"../img/shiryou/siryourogo.webp",
+            "img":"../img/Shiryou/SiryouRogo.webp",
             "name":"ユンクル",
             "nameEn":"Unchl",
             "height":"161cm",
@@ -205,7 +205,7 @@
         },
         {
             "id":"xirozhma",
-            "img":"../img/shiryou/xirozhma.webp",
+            "img":"../img/Shiryou/Xirozhma.webp",
             "name":"シロズマ",
             "nameEn":"Xirozhma",
             "height":"163cm",
@@ -225,7 +225,7 @@
         },
         {
             "id":"yevan",
-            "img":"../img/shiryou/yevan.webp",
+            "img":"../img/Shiryou/Yevan.webp",
             "name":"イヴァン",
             "nameEn":"Yevan",
             "height":"174cm",
@@ -246,7 +246,7 @@
         },
         {
             "id":"zilaydy",
-            "img":"../img/shiryou/zilaydy.webp",
+            "img":"../img/Shiryou/Zilaydy.webp",
             "name":"ジレイディ",
             "nameEn":"Zilaydy",
             "height":"170cm",
