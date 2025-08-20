@@ -35,7 +35,7 @@
         },
         {
             "id":"syou",
-            "img":"../img/andei/syou.webp",
+            "img":"../img/Andei/Syou.webp",
             "name":"α-31",
             "nameEn":"ショウ",
             "sex":"女",
@@ -70,7 +70,7 @@
       "members": [
         {
             "id":"nea",
-            "img":"../img/andei/nea.webp",
+            "img":"../img/Andei/Nea.webp",
             "name":"β-54",
             "nameEn":"ネア",
             "sex":"男",
@@ -104,7 +104,7 @@
       "members": [
         {
             "id":"yun",
-            "img":"../img/andei/yun.webp",
+            "img":"../img/Andei/Yun.webp",
             "name":"γ-14",
             "nameEn":"ユン",
             "sex":"女",
@@ -138,7 +138,7 @@
       "members": [
         {
             "id":"nu",
-            "img":"../img/andei/nu.webp",
+            "img":"../img/Andei/Nu.webp",
             "name":"δ-88",
             "nameEn":"ヌー",
             "sex":"女",
@@ -173,7 +173,7 @@
       "members": [
         {
             "id":"mireya",
-            "img":"../img/andei/mireya.webp",
+            "img":"../img/Andei/Mireya.webp",
             "name":"ε-71",
             "nameEn":"ミレーヤ",
             "sex":"女",
@@ -204,4 +204,3 @@
     }
   ]
 }
-
