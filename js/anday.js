@@ -1,6 +1,6 @@
 // ★ ページ読み込み直後の“生”ハッシュを確保（上書きされる前に！）
 const RAW_HASH_AT_BOOT = location.hash;
-console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
+//console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 
 
 // ===== Tabs: 世界設定 / キャラクター =======================================================
@@ -129,39 +129,38 @@ console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
   }
 })();
 
+function resolveFromDoc(p) {
+  try { return new URL(p, document.baseURI).href; } catch { return p; }
+}
+
 // キャラボタン
 function createCharButton(m) {
-  console.log(m)
   const btn = document.createElement('button');
   btn.className = 'char';
   btn.type = 'button';
   btn.dataset.id = m.id || '';
   btn.dataset.name = m.name || '';
 
-  // 画像
   const shell = document.createElement('span');
   shell.className = 'char-img';
+
   const img = new Image();
   img.loading = 'lazy';
-  img.src = m.img;
   img.alt = m.name || '';
+  // ここがキモ：相対を「このHTML」基準で絶対化
+  img.src = resolveFromDoc(m.img || '');
   shell.appendChild(img);
 
-  // ラベル2段
   const labels = document.createElement('span');
   labels.className = 'char-labels';
-
-  const line1 = document.createElement('span'); // 1行目：α-27
+  const line1 = document.createElement('span');
   line1.className = 'char-label line1';
   line1.textContent = m.name || '';
-
-  const line2 = document.createElement('span'); // 2行目：ニーナ
+  const line2 = document.createElement('span');
   line2.className = 'char-label line2';
   line2.textContent = m.nameEn || '';
-
   labels.append(line1, line2);
 
-  // 並べる順番：画像 → ラベル
   btn.append(shell, labels);
   return btn;
 }
@@ -357,3 +356,4 @@ function openFromInitialHash() {
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
