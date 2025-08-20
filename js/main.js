@@ -50,13 +50,6 @@ function hydrateLinks(root) {
 
 // ヘッダー、フッター挿入　##################################################################
 async function loadFragment(slot, url, cacheKey) {
-  // 直前のリクエストを中断
-  const last = _fragmentLoads.get(slot);
-  if (last) last.abort?.();
-
-  const ctrl = new AbortController();
-  _fragmentLoads.set(slot, ctrl);
-
   // 即時描画（キャッシュがあれば）
   const cached = sessionStorage.getItem(cacheKey);
   if (cached) {
@@ -133,3 +126,4 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
