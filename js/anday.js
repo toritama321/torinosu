@@ -143,7 +143,7 @@ function createCharButton(m) {
   shell.className = 'char-img';
   const img = new Image();
   img.loading = 'lazy';
-  img.src = '/torinosu/ & 'm.img;
+  img.src = '/torinosu/' + m.img;
   img.alt = m.name || '';
   shell.appendChild(img);
 
@@ -356,3 +356,4 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
