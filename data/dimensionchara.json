@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"tori",
-            "img":"../img/dimension/tori.webp",
+            "img":"../img/Dimension/Tori.webp",
             "name":"トリ",
             "nameEn":"Tori",
             "sex":"曰く雌雄同体",
@@ -43,7 +43,7 @@
         },
         {
             "id":"ran",
-            "img":"../img/dimension/ran.webp",
+            "img":"../img/Dimension/Ran.webp",
             "name":"ラン",
             "nameEn":"Ran",
             "sex":"真ん中",
@@ -81,7 +81,7 @@
         },
         {
             "id":"furutori",
-            "img":"../img/dimension/furutori.webp",
+            "img":"../img/Dimension/Furutori.webp",
             "name":"フルトリ",
             "nameEn":"Ran",
             "sex":"そんな概念はない",
@@ -117,7 +117,7 @@
         },
         {
             "id":"iroturu",
-            "img":"../img/dimension/iroturu.webp",
+            "img":"../img/Dimension/Iroturu.webp",
             "name":"イロツル",
             "nameEn":"Iroturu",
             "sex":"なし",
