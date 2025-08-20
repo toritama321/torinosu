@@ -1,7 +1,6 @@
 // GitHub Pagesでは、ルートが「https://...github.io/」になる。
 // ルート相対パスを書く場合は、/<リポジトリ名>/を先頭につける必要がある。
 
-
 // html要素からdata-baseを取得
 const SITE_BASE = document.documentElement.dataset.base || "";
 
@@ -50,24 +49,35 @@ function hydrateLinks(root) {
 }
 
 // ヘッダー、フッター挿入　##################################################################
-async function loadFragment(targetSel, path) {
-  const res = await fetch(joinBase(path));        // header.html を /<data-set>/header.html に
-  if (!res.ok) throw new Error(`fetch失敗: ${path}`);
-  const html = await res.text();
+async function loadFragment(slot, url, cacheKey) {
+  // 1) 即時描画（キャッシュがあれば）
+  const cached = sessionStorage.getItem(cacheKey);
+  if (cached) {
+    slot.innerHTML = cached;
+    hydrateLinks(slot);
+    readySlot(slot);
+  }
 
-  const el = document.querySelector(targetSel);
-  el.innerHTML = html;                            // 共通パーツを素で挿入
+  // 2) ネットワークで最新化
+  try {
+    const res = await fetch(joinBase(url), { cache: "no-cache" });  // header.html を /<torinosu>/header.html に
+    const html = await res.text();
 
-  // ここから“中身の相対パス”を補正して実体化（hydrate）
-  // 画像: <img data-src="img/foo.webp"> を <img src="/torinosu/img/foo.webp"> に変換
-  el.querySelectorAll('img[data-src]').forEach(img => {
-    img.src = joinBase(img.dataset.src);
-  });
-
-  // リンク: <a data-href="links.html"> → <a href="/torinosu/links.html">
-  el.querySelectorAll('a[data-href]').forEach(a => {
-    a.href = joinBase(a.dataset.href);
-  });
+    // 初回 or 内容更新時のみ差し替え（ミクロな再ペイントに抑える）
+    if (!cached || cached !== html) {
+      slot.innerHTML = html;
+      hydrateLinks(slot);
+      if (!slot.classList.contains("is-ready")) readySlot(slot);
+      sessionStorage.setItem(cacheKey, html);
+    }
+  } catch (e) {
+    console.error("include失敗:", url, e);
+    // キャッシュも無く、fetchも失敗 → 最低限のフォールバック
+    if (!cached) {
+      slot.innerHTML = `<div style="padding:12px;background:#fff;border-radius:8px">headerの読み込みに失敗しました</div>`;
+      readySlot(slot);
+    }
+  }
 }
 
 // ヘッダー、フッター読み込み
@@ -76,8 +86,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const footerSlot = document.querySelector('[data-include="footer.html"]');
 
   const jobs = [];
-  if (headerSlot) jobs.push(loadFragment(headerSlot, "header.html"));
-  if (footerSlot) jobs.push(loadFragment(footerSlot, "footer.html"));
+  if (headerSlot) jobs.push(loadFragment(headerSlot, "header.html", "frag:header"));
+  if (footerSlot) jobs.push(loadFragment(footerSlot, "footer.html", "frag:footer"));
 
   await Promise.all(jobs);
   highlightActiveNav();
