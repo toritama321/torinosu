@@ -157,6 +157,7 @@ function createCharButton(m) {
   img.src = withBase(m.img);
   img.alt = m.name || '';
   shell.appendChild(img);
+  console.log('imgURL:',img.src);
 
   // ラベル2段
   const labels = document.createElement('span');
@@ -367,5 +368,6 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
