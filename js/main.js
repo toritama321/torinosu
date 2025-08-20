@@ -1,4 +1,4 @@
-// === どこから読んでも /torinosu/ を基準にできる検出ロジック ===
+// === 検出ロジック ===
 const SITE_BASE = (() => {
   // <html data-base="/torinosu/"> と明示されてたらそれを使う
   const htmlBase = document.documentElement.dataset.base;
@@ -10,13 +10,14 @@ const SITE_BASE = (() => {
   return segs.length ? `/${segs[0]}/` : '/';
 })();
 
+// 相対パスを絶対パスにする
 function joinBase(path) {
   if (!path) return '';
   // すでに絶対URL or プロトコル相対ならそのまま
   if (/^(https?:)?\/\//i.test(path)) return path;
   // URLで安全に解決（"./", "../", "/torinosu/xxx" もOK）
   const abs = new URL(path, location.origin + SITE_BASE);
-  return abs.href; // fetch/href/src どれでも使える
+  return abs.href;
 }
 
 
@@ -110,6 +111,7 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth" // スムーズスクロール
   });
 });
+
 
 
 
