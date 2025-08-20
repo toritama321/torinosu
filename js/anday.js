@@ -2,6 +2,17 @@
 const RAW_HASH_AT_BOOT = location.hash;
 console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 
+// ベースパス（リポ名に合わせる）
+const BASE_PATH = '/torinosu/';
+
+// 安全にくっつける関数
+function withBase(path) {
+  if (!path) return '';
+  // すでに http:// や /torinosu/ で始まってたらそのまま
+  if (/^(https?:|\/torinosu\/)/.test(path)) return path;
+  // ../ を消して BASE_PATH にくっつける
+  return BASE_PATH + path.replace(/^(\.\/|\.\.\/)+/, '');
+}
 
 // ===== Tabs: 世界設定 / キャラクター =======================================================
 (function initTabs(){
@@ -143,7 +154,7 @@ function createCharButton(m) {
   shell.className = 'char-img';
   const img = new Image();
   img.loading = 'lazy';
-  img.src = '/torinosu/' + m.img;
+  img.src = withBase(m.img);
   img.alt = m.name || '';
   shell.appendChild(img);
 
@@ -356,4 +367,5 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
