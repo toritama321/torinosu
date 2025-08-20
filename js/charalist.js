@@ -13,13 +13,13 @@ function withBase(path) {
 // 設定　########################################################################
 // JSONファイル
 const JSON_SOURCES = [
-  "data/dracochara.json",
-  "data/kurochara.json",
-  "data/ryukotochara.json",
-  "data/andaychara.json",
-  "data/mmchara.json",
-  "data/siryouchara.json",
-  "data/dimensionchara.json"
+  "/torinosu/data/dracochara.json",
+  "/torinosu/data/kurochara.json",
+  "/torinosu/data/ryukotochara.json",
+  "/torinosu/data/andaychara.json",
+  "/torinosu/data/mmchara.json",
+  "/torinosu/data/siryouchara.json",
+  "/torinosu/data/dimensionchara.json"
 ];
 
 // ページファイル名 のマップ（必要に応じて追加）
@@ -278,3 +278,4 @@ function refreshLazy() {
     .forEach(img => io ? io.observe(img) : hydrateImg(img));
 
 }
+
