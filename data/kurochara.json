@@ -5,7 +5,7 @@
       "members": [
         {
             "id":"meina",
-            "img":"../img/Kurokura/meina.webp",
+            "img":"../img/Kurokura/Meina.webp",
             "name":"入江 メイナ",
             "nameEn":"Irie Meina",
             "nameKan":"",
@@ -42,7 +42,7 @@
         },
         {
             "id":"kurai",
-            "img":"../img/Kurokura/kurai.webp",
+            "img":"../img/Kurokura/Kurai.webp",
             "name":"クライ",
             "nameEn":"Kurai",
             "nameKan":"喰",
@@ -82,7 +82,7 @@
         },
         {
             "id":"karen",
-            "img":"../img/kurokura/Karen.webp",
+            "img":"../img/Kurokura/Karen.webp",
             "name":"斑鳩 カレン",
             "nameEn":"Ikaruga Karen",
             "nameKan":"",
@@ -117,7 +117,7 @@
         },
         {
             "id":"madoi",
-            "img":"../img/kurokura/madoi.webp",
+            "img":"../img/Kurokura/Madoi.webp",
             "name":"マドイ",
             "nameEn":"Madoi",
             "nameKan":"惑",
@@ -152,7 +152,7 @@
         },
         {
             "id":"hibiki",
-            "img":"../img/kurokura/hibiki.webp",
+            "img":"../img/Kurokura/Hibiki.webp",
             "name":"ヒビキ",
             "nameEn":"Hibiki",
             "nameKan":"響",
@@ -190,7 +190,7 @@
         },
         {
             "id":"tyo",
-            "img":"../img/kurokura/tyo.webp",
+            "img":"../img/Kurokura/Tyo.webp",
             "name":"チョウ",
             "nameEn":"Tyo",
             "nameKan":"澄",
@@ -231,7 +231,7 @@
       "members": [
         {
           "id":"nemu",
-          "img":"../img/kurokura/nemu.webp",
+          "img":"../img/Kurokura/Nemu.webp",
           "name":"ネム",
           "nameEn":"Nemu",
           "nameKan":"眠",
@@ -268,7 +268,7 @@
         },
         {
           "id":"kakeri",
-          "img":"../img/kurokura/kakeri.webp",
+          "img":"../img/Kurokura/Kakeri.webp",
           "name":"カケリ",
           "nameEn":"Kakeri",
           "nameKan":"翔",
@@ -304,7 +304,7 @@
         },
         {
           "id":"koware",
-          "img":"../img/kurokura/koware.webp",
+          "img":"../img/Kurokura/Koware.webp",
           "name":"コワレ",
           "nameEn":"Koware",
           "nameKan":"壊",
@@ -343,7 +343,7 @@
         },
         {
           "id":"ren",
-          "img":"../img/kurokura/ren.webp",
+          "img":"../img/Kurokura/Ren.webp",
           "name":"レン",
           "nameEn":"Ren",
           "nameKan":"變",
@@ -380,7 +380,7 @@
         },
         {
           "id":"inori",
-          "img":"../img/kurokura/inori.webp",
+          "img":"../img/Kurokura/Inori.webp",
           "name":"イノリ",
           "nameEn":"Inori",
           "nameKan":"祈",
@@ -417,7 +417,7 @@
         },
         {
           "id":"utsushi",
-          "img":"../img/kurokura/utusi.webp",
+          "img":"../img/Kurokura/Utusi.webp",
           "name":"ウツシ",
           "nameEn":"Utsushi",
           "nameKan":"映",
@@ -454,7 +454,7 @@
         },
         {
           "id":"utai",
-          "img":"../img/kurokura/utai.webp",
+          "img":"../img/Kurokura/Utai.webp",
           "name":"ウタイ",
           "nameEn":"Utai",
           "nameKan":"唄",
@@ -490,7 +490,7 @@
         },
         {
           "id":"iyu",
-          "img":"../img/kurokura/iyu.webp",
+          "img":"../img/Kurokura/Iyu.webp",
           "name":"イユ",
           "nameEn":"Iyu",
           "nameKan":"癒",
@@ -528,7 +528,7 @@
         },
         {
           "id":"musubi",
-          "img":"../img/kurokura/musubi.webp",
+          "img":"../img/Kurokura/Musubi.webp",
           "name":"ムスビ",
           "nameEn":"Musubi",
           "nameKan":"結",
@@ -572,7 +572,7 @@
         },
         {
           "id":"tatsu",
-          "img":"../img/kurokura/tatu.webp",
+          "img":"../img/Kurokura/Tatu.webp",
           "name":"タツ",
           "nameEn":"Tatsu",
           "nameKan":"断",
@@ -610,7 +610,7 @@
         },
         {
           "id":"kasane",
-          "img":"../img/kurokura/kasane.webp",
+          "img":"../img/Kurokura/Kasane.webp",
           "name":"カサネ",
           "nameEn":"Kasane",
           "nameKan":"重",
@@ -652,7 +652,7 @@
       "members": [
         {
           "id":"akashi",
-          "img":"../img/kurokura/akasi.webp",
+          "img":"../img/Kurokura/Akasi.webp",
           "name":"アカシ",
           "nameEn":"Akashi",
           "nameKan":"灯",
@@ -687,7 +687,7 @@
         },
         {
           "id":"tei",
-          "img":"../img/kurokura/tei.webp",
+          "img":"../img/Kurokura/Tei.webp",
           "name":"テイ",
           "nameEn":"Tei",
           "nameKan":"㓅",
@@ -722,7 +722,7 @@
         },
         {
           "id":"shirushi",
-          "img":"../img/kurokura/sirusi.webp",
+          "img":"../img/Kurokura/Sirusi.webp",
           "name":"シルシ",
           "nameEn":"Shirushi",
           "nameKan":"讖",
@@ -758,7 +758,7 @@
         },
         {
           "id":"ganny",
-          "img":"../img/kurokura/gyani.webp",
+          "img":"../img/Kurokura/Gyani.webp",
           "name":"ギャニー",
           "nameEn":"Ganny",
           "nameKan":"",
@@ -794,7 +794,7 @@
         },
         {
           "id":"numael",
-          "img":"../img/kurokura/numaeru.webp",
+          "img":"../img/Kurokura/Numaeru.webp",
           "name":"ヌーマエル",
           "nameEn":"Numael",
           "nameKan":"",
