@@ -85,7 +85,7 @@
         },
         {
             "id":"kalanch",
-            "img":"../img/Shiryou/Siryourogo.webp",
+            "img":"../img/Shiryou/SiryouRogo.webp",
             "name":"カランチ",
             "nameEn":"Kalanch",
             "height":"158cm",
@@ -268,3 +268,4 @@
     }
   ]
 }
+
