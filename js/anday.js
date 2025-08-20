@@ -192,7 +192,7 @@ function createCharButton(m) {
     // 画像
     const img = document.getElementById('pImg');
     if (img) {
-      img.src = data.img || '';
+      img.src = withBase(data.img);
       img.alt = data.name || '';
     }
 
@@ -368,6 +368,7 @@ function openFromInitialHash() {
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
 
