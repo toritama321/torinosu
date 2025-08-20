@@ -2,6 +2,18 @@
 const RAW_HASH_AT_BOOT = location.hash;
 //console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 
+// ベースパス（リポ名に合わせる）
+const BASE_PATH = '/torinosu/';
+
+// 安全にくっつける関数
+function withBase(path) {
+  if (!path) return '';
+  // すでに http:// や /torinosu/ で始まってたらそのまま
+  if (/^(https?:|\/torinosu\/)/.test(path)) return path;
+  // ../ を消して BASE_PATH にくっつける
+  return BASE_PATH + path.replace(/^(\.\/|\.\.\/)+/, '');
+}
+
 // ===== Tabs: 世界設定 / キャラクター =======================================================
 (function initTabs(){
   const root = document.querySelector('[data-tabs]');
@@ -83,7 +95,7 @@ const RAW_HASH_AT_BOOT = location.hash;
           btn.type = 'button';
 
           // 画像だけは階層補正
-          const fixed = { ...m, img: jbase(m.img || '') };
+          const fixed = { ...m, img: withBase(m.img || '') };
           btn._data = fixed; // ← これがミソ（全部持たせる）
 
           btn.innerHTML = `
@@ -150,7 +162,7 @@ function createCharButton(m, jbase) {
 
   const img = document.createElement('img');
   img.loading = 'lazy';
-  img.src = fixed.img || '';
+  img.src = withBase(m.img || '')
   img.alt = m.name || '';
 
   shell.appendChild(img);
@@ -400,5 +412,6 @@ function openFromInitialHash() {
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
 
