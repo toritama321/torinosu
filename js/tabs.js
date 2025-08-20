@@ -1,6 +1,6 @@
 // ★ ページ読み込み直後の“生”ハッシュを確保（上書きされる前に！）
 const RAW_HASH_AT_BOOT = location.hash;
-console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
+//console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 
 // ===== Tabs: 世界設定 / キャラクター =======================================================
 (function initTabs(){
@@ -58,13 +58,13 @@ console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
   const esc = s => (s ?? '').toString()
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const jbase = (p) => (window.joinBase ? joinBase(p) : p);
-  console.log('url:',jbase)
 
   for (const root of sections) {
     const file = root.dataset.json;                // ← HTMLで指定したJSON
     try {
       const res = await fetch(jbase(file), { cache: 'no-cache' });
       const data = await res.json();
+      console.log('url:',res);
 
       // groups配列前提（前と同じ構造）
       const frag = document.createDocumentFragment();
@@ -400,4 +400,5 @@ function openFromInitialHash() {
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
 
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
+
 
