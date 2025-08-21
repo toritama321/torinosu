@@ -1,5 +1,5 @@
 // ===== 設定 =====
-const POSTS_JSON = joinBase('data/posts.json'); // 記事メタ一覧の場所
+const POSTS_JSON = joinBase('/torinosu/blog/posts.json'); // 記事メタ一覧の場所
 
 // ===== 小道具 =====
 const $  = (s, r=document) => r.querySelector(s);
@@ -103,5 +103,6 @@ function applyFilter(tag) {
     const em = $('#empty'); em.textContent = '記事一覧を取得できなかった…'; em.hidden = false;
   }
 })();
+
 
 
