@@ -1,9 +1,3 @@
-// ===== ベース検出（GitHub Pagesの /<repo>/ に自動追従） =====
-const SITE_BASE = (() => {
-  const segs = location.pathname.split('/').filter(Boolean);
-  return segs.length ? `/${segs[0]}/` : '/';
-})();
-
 (() => {
   // 既存の joinBase があればそれを使う。無ければ最小実装を作る
   const joinBase = (window.joinBase) ? window.joinBase : (p => {
@@ -119,3 +113,4 @@ function applyFilter(tag) {
 })();
 
 })();
+
