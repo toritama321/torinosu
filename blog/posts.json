@@ -4,7 +4,7 @@
     "title": "砂場にすらなりきれない",
     "date": "2023-4-10",
     "tags": ["ぼやき"],
-    "desc": "自創作についてのいろんなことを書き留めていこうと思います。",
+    "desc": "自創作についてのいろんなことを書き留めていく",
     "path": "blog/2023-4-10_1.html"
   },
   {
@@ -12,10 +12,95 @@
     "title": "僕もあなたもパラレル",
     "date": "2023-04-10",
     "tags": ["ぼやき"],
-    "desc": "可能性を記した記事が存在する。",
+    "desc": "可能性を記した記事が存在する",
     "path": "blog/2023-4-10_2.html"
+  },
+  {
+    "slug": "namedra",
+    "title": "お名前の話(ドラゴンの国)",
+    "date": "2023-04-10",
+    "tags": ["DraconisUtopia"],
+    "desc": "ドラゴンたちの名前の由来",
+    "path": "blog/2023-4-10_3.html"
+  },
+  {
+    "slug": "namekuro",
+    "title": "お名前の話(くろくら)",
+    "date": "2023-04-11",
+    "tags": ["黒色の喰"],
+    "desc": "言妖たちの名前について",
+    "path": "blog/2023-4-11_1.html"
+  },
+  {
+    "slug": "ryukotoend",
+    "title": "物語の終わり",
+    "date": "2023-04-11",
+    "tags": ["龍のコトダマ"],
+    "desc": "龍コトの辿る道",
+    "path": "blog/2023-4-11_2.html"
+  },
+  {
+    "slug": "dragijutsu",
+    "title": "お国の技術レベル",
+    "date": "2023-04-11",
+    "tags": ["DraconisUtopia"],
+    "desc": "ドラゴンの国の技術や文化",
+    "path": "blog/2023-4-11_3.html"
+  },
+  {
+    "slug": "nihinive",
+    "title": "黒白カップルのいろいろ",
+    "date": "2023-04-11",
+    "tags": ["DraconisUtopia"],
+    "desc": "ニヒニベというカップルについて",
+    "path": "blog/2023-4-11_4.html"
+  },
+  {
+    "slug": "kuroworld",
+    "title": "写す世界は狭い",
+    "date": "2023-04-11",
+    "tags": ["黒色の喰"],
+    "desc": "くろくら世界を映すカメラ",
+    "path": "blog/2023-4-11_5.html"
+  },
+  {
+    "slug": "loshikan",
+    "title": "あ！　野生の既視感が現れた！",
+    "date": "2023-04-12",
+    "tags": ["ぼやき"],
+    "desc": "既視感を怖がるな",
+    "path": "blog/2023-4-12_1.html"
+  },
+  {
+    "slug": "maryoku",
+    "title": "魔力",
+    "date": "2023-04-12",
+    "tags": ["DraconisUtopia","黒色の喰","龍のコトダマ"],
+    "desc": "超常現象の源の力",
+    "path": "blog/2023-4-12_2.html"
+  },
+  {
+    "slug": "viomnis",
+    "title": "神と龍神",
+    "date": "2023-04-16",
+    "tags": ["龍のコトダマ"],
+    "desc": "ヴィオレッタとオムニスの関係",
+    "path": "blog/2023-4-16.html"
+  },
+  {
+    "slug": "montsuki",
+    "title": "紋付竜とは",
+    "date": "2023-04-30",
+    "tags": ["DraconisUtopia"],
+    "desc": "紋付竜とそれ以外のドラゴンの違い",
+    "path": "blog/2023-4-30.html"
+  },
+  {
+    "slug": "zenaku",
+    "title": "善悪って難しい",
+    "date": "2023-07-03",
+    "tags": ["黒色の喰","龍のコトダマ"],
+    "desc": "良い人と悪い人の境目ってなに",
+    "path": "blog/2023-7-3.html"
   }
-
 ]
-
-
