@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BLOG</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/blog.css">
+  <script src="../js/main.js" defer></script>
+  <script src="../js/blog-list.js" defer></script>
+</head>
+
+<body>
+  <div id="header-slot" class="u-invis header-reserve" data-include="header.html"></div>
+
+  <main class="wrap">
+    <!-- タグのタブ -->
+    <div id="tagTabs" class="tabs" role="tablist" aria-label="タグで絞り込み"></div>
+
+    <!-- 一覧 -->
+    <section id="list" class="grid" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>まだ記事がないようだな。</p>
+  </main>
+
+  <div class="space-vertical"></div>
+  <button id="scrollTopBtn">▲</button>
+  <div id="footer-slot" class="u-invis footer-reserve" data-include="footer.html"></div>
+</body>
+</html>

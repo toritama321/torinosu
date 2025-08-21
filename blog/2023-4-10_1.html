@@ -1,0 +1,83 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>青の霧 - 鳥の巣ブログ</title>
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="site-logo" href="../index.html">鳥の巣</a>
+      <a class="site-nav-link" href="./index.html">ブログ</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">青の霧</h1>
+        <div class="post-meta">
+          <time datetime="2025-08-21">2025-08-21</time>
+          <span class="sep">・</span>
+          <span class="tags">
+            <a href="./index.html?tag=短編">短編</a>
+            <a href="./index.html?tag=ドラゴンの国">ドラゴンの国</a>
+          </span>
+          <span class="sep">・</span>
+          <span id="readingTime" aria-label="読了時間の目安"></span>
+        </div>
+
+        <!-- アイキャッチ（あれば） -->
+        <figure class="post-hero">
+          <img src="../img/blog/sample-hero.webp" alt="朝もやに包まれる港町の挿絵" loading="lazy" decoding="async">
+          <figcaption>霧の向こうに、まだ名前のない光。</figcaption>
+        </figure>
+      </header>
+
+      <!-- 本文 -->
+      <div class="prose" id="postBody">
+        <p>霧が鳴く朝、彼女は北の塔から街路を見下ろしていた。鐘の音は海の方角へ薄まり、羽音だけが残る。</p>
+
+        <h2>見出し（H2）</h2>
+        <p>本文は16–18px、行間は1.7〜1.8が読みやすい。横幅も70文字前後に抑えると快適。</p>
+
+        <blockquote>
+          どんな秘密も、紙とインクと沈黙の前では少しだけやわらかくなる。
+        </blockquote>
+
+        <h3>箇条書き</h3>
+        <ul>
+          <li>短い段落</li>
+          <li>シンプルな装飾</li>
+          <li>強調は <strong>太字</strong> を最小限に</li>
+        </ul>
+
+        <figure>
+          <img src="../img/blog/detail.webp" alt="古地図の断片" loading="lazy" decoding="async">
+          <figcaption>古地図の断片。航路はかすれて読めない。</figcaption>
+        </figure>
+
+        <pre><code>// サンプルコード
+function hello(name){ return `hello, ${name}`; }
+</code></pre>
+
+        <table>
+          <thead><tr><th>項目</th><th>値</th></tr></thead>
+          <tbody>
+            <tr><td>方角</td><td>北北西</td></tr>
+            <tr><td>風力</td><td>2</td></tr>
+          </tbody>
+        </table>
+
+        <hr>
+        <p class="ending">── 完 ──</p>
+      </div>
+
+      <footer class="post-footer">
+        <a class="back" href="./index.html">← 記事一覧へ戻る</a>
+      </footer>
+    </article>
+  </main>
+
+  <script src="../js/blog.js" defer></script>
+</body>
