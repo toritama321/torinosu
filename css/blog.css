@@ -1,5 +1,5 @@
 :root{
-  --bg:#f5f6fb; --text:#1a1a1a; --muted:#666;
+  --bg:#dbe5f0; --text:#1a1a1a; --muted:#666;
   --card:#fff; --border:#e5e7ee; --accent:#6b6fcf;
   --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06), 0 10px 24px rgba(0,0,0,.05);
 }
@@ -106,5 +106,6 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
