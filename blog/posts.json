@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "zen-aku",
+    "title": "善悪って難しい",
+    "date": "2023-07-03",
+    "tags": ["随筆"],
+    "desc": "善悪は視点によって変わる…創作の根底にある軸の話。",
+    "path": "posts/zen-aku.html"
+  },
+  {
+    "slug": "god-and-dragon",
+    "title": "神と龍神",
+    "date": "2023-04-16",
+    "tags": ["Draconis Utopia"],
+    "desc": "オムニスの設定メモ。未来の自分への備忘録。",
+    "path": "posts/god-and-dragon.html"
+  }
+]
