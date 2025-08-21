@@ -43,6 +43,7 @@ body{
   padding:16px;border:1px solid var(--border);border-radius:var(--radius);
   background:var(--card);box-shadow:var(--shadow);
   min-height:200px;
+  text-decoration: none;
 }
 .card:hover{transform:translateY(-1px);transition:.12s}
 .card time{color:var(--muted);font-size:.9rem}
@@ -106,6 +107,7 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
 
