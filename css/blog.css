@@ -121,6 +121,9 @@ body{
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   border-radius: 10px;/*角の丸み*/
 }
+.prose p{
+  padding: 15px 0px;
+}
 .post-footer a {
   background: #303030;
   border-radius: 3px;
@@ -156,6 +159,7 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
 
