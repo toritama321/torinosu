@@ -53,3 +53,14 @@ body{
 
 /* 空表示 */
 .empty{color:var(--muted);text-align:center;margin:24px 0}
+
+
+
+/* 記事######################################################################### */
+.prose{
+  padding: 30px 25px;
+  margin: 20px 20% 0px;
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;/*角の丸み*/
+}
