@@ -3,7 +3,14 @@ const SITE_BASE = (() => {
   const segs = location.pathname.split('/').filter(Boolean);
   return segs.length ? `/${segs[0]}/` : '/';
 })();
-const joinBase = (p) => /^(https?:)?\/\//.test(p) ? p : SITE_BASE + String(p).replace(/^\/+/, '');
+
+(() => {
+  // 既存の joinBase があればそれを使う。無ければ最小実装を作る
+  const joinBase = (window.joinBase) ? window.joinBase : (p => {
+    const segs = location.pathname.split('/').filter(Boolean);
+    const base = segs.length ? `/${segs[0]}/` : '/';
+    return /^(https?:)?\/\//.test(p) ? p : base + String(p).replace(/^\/+/, '');
+  });
 
 // ===== 設定 =====
 const POSTS_JSON = joinBase('data/posts.json'); // 記事メタ一覧の場所
@@ -109,4 +116,6 @@ function applyFilter(tag) {
     $('#list').innerHTML = '';
     const em = $('#empty'); em.textContent = '記事一覧を取得できなかった…'; em.hidden = false;
   }
+})();
+
 })();
