@@ -57,10 +57,24 @@ body{
 
 
 /* 記事######################################################################### */
-.prose{
+.post-header{
   padding: 30px 25px;
-  margin: 20px 20% 0px;
+  margin: 20px 15% 0px;
   background: white;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   border-radius: 10px;/*角の丸み*/
 }
+.prose{
+  padding: 30px 25px;
+  margin: 20px 15% 0px;
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;/*角の丸み*/
+}
+.post-footer{
+  padding: 30px 25px;
+  margin: 20px auto;
+  background: rgb(56, 56, 56);
+  color: white;
+}
+
