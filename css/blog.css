@@ -50,18 +50,18 @@ body{
 }
 .card:hover{
   transform:translateY(-1px);
-  transition:.12s
+  transition:.12s;
 }
 .card time{
   color:var(--muted);
-  font-size:.9rem
+  font-size:.9rem;
   text-decoration: none;
 }
 .card-title{
   font-weight:800;
   font-size:1.12rem;
   line-height:1.35;
-  margin:0
+  margin:0;
   text-decoration: none;
 }
 .card-ex{
@@ -70,14 +70,14 @@ body{
   display:-webkit-box;
   -webkit-line-clamp:3;
   -webkit-box-orient:vertical;
-  overflow:hidden
+  overflow:hidden;
   text-decoration: none;
 }
 .card-hr{
   height:1px;
   background:var(--border);
   border:0;
-  margin:8px 0 0
+  margin:8px 0 0;
   text-decoration: none;
 }
 .card a{
@@ -140,6 +140,7 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
 
