@@ -159,6 +159,14 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+blockquote {
+  margin: 1em 0;
+  padding: 1em;
+  border-left: 4px solid #888;
+  background: #f9f9f9;
+  font-style: italic;
+  color: #3a3a3a;
+}
 
 
 
