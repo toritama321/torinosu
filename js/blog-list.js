@@ -1,11 +1,3 @@
-(() => {
-  // 既存の joinBase があればそれを使う。無ければ最小実装を作る
-  const joinBase = (window.joinBase) ? window.joinBase : (p => {
-    const segs = location.pathname.split('/').filter(Boolean);
-    const base = segs.length ? `/${segs[0]}/` : '/';
-    return /^(https?:)?\/\//.test(p) ? p : base + String(p).replace(/^\/+/, '');
-  });
-
 // ===== 設定 =====
 const POSTS_JSON = joinBase('data/posts.json'); // 記事メタ一覧の場所
 
@@ -112,5 +104,4 @@ function applyFilter(tag) {
   }
 })();
 
-})();
 
