@@ -36,6 +36,10 @@ body{
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   align-items:stretch;
 }
+.grid a{
+  color: var(--text);
+  text-decoration: none;
+}
 
 /* カード（画像なし版） */
 .card * {
@@ -150,6 +154,7 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
 
