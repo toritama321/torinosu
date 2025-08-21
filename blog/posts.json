@@ -8,13 +8,14 @@
     "path": "blog/2023-4-10_1.html"
   },
   {
-    "slug": "god-and-dragon",
-    "title": "神と龍神",
-    "date": "2023-04-16",
-    "tags": ["Draconis Utopia"],
-    "desc": "オムニスの設定メモ。未来の自分への備忘録。",
-    "path": "posts/god-and-dragon.html"
+    "slug": "parareru",
+    "title": "僕もあなたもパラレル",
+    "date": "2023-04-10",
+    "tags": ["ぼやき"],
+    "desc": "可能性を記した記事が存在する。",
+    "path": "blog/2023-4-10_2.html"
   }
 
 ]
+
 
