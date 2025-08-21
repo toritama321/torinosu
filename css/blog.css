@@ -55,6 +55,7 @@ body{
 .card time{
   color:var(--muted);
   font-size:.9rem;
+  color: inherit;
   text-decoration: none;
 }
 .card-title{
@@ -62,6 +63,7 @@ body{
   font-size:1.12rem;
   line-height:1.35;
   margin:0;
+  color: inherit;
   text-decoration: none;
 }
 .card-ex{
@@ -71,6 +73,7 @@ body{
   -webkit-line-clamp:3;
   -webkit-box-orient:vertical;
   overflow:hidden;
+  color: inherit;
   text-decoration: none;
 }
 .card-hr{
@@ -78,6 +81,7 @@ body{
   background:var(--border);
   border:0;
   margin:8px 0 0;
+  color: inherit;
   text-decoration: none;
 }
 .card a{
@@ -140,6 +144,7 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
 
