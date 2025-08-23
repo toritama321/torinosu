@@ -1,0 +1,61 @@
+:root{
+  --bg:#eef1f7; --text:#1a1a1a; --muted:#6a6a6a;
+  --card:#fff; --border:#e2e5ee; --accent:#6b6fcf;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06), 0 10px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1114; --text:#e6e6e6; --muted:#a6a6a6; --card:#14171c; --border:#2a2e35; --accent:#8aa2ff; }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  text-rendering:optimizeLegibility;
+}
+
+/* ヘッダー */
+.site-header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 75%,transparent);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--border)}
+.site-nav{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:16px;align-items:center}
+.site-logo,.site-nav-link{color:inherit;text-decoration:none}
+.site-nav-spacer{flex:1}
+
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 64px}
+
+/* タグタブ */
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 18px}
+.tab{
+  appearance:none;border:none;background:transparent;color:var(--text);opacity:.8;cursor:pointer;
+  padding:8px 12px;border-radius:9999px;transition:.15s
+}
+.tab[aria-selected="true"]{background:var(--accent);color:#fff;opacity:1}
+
+/* 本棚グリッド */
+.shelf{
+  display:grid;gap:24px;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  align-items:start;
+  background:
+    linear-gradient(#0000 38px, color-mix(in srgb,var(--border) 80%, transparent) 39px) 0 0/100% 180px; /* 棚板 */
+  padding-top:12px;
+}
+
+/* 本（カバー） */
+.book{
+  display:flex;flex-direction:column;gap:8px;align-items:stretch;
+  text-decoration:none;color:inherit;
+}
+.cover{
+  aspect-ratio: 3/4; border-radius: 12px; overflow:hidden;
+  background: var(--card); box-shadow: var(--shadow);
+  border:1px solid var(--border); display:grid; place-items:center;
+}
+.cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+.title{ font-weight:800; font-size:1rem; line-height:1.35; }
+.meta{ color:var(--muted); font-size:.88rem; }
+
+/* 空表示 */
+.empty{color:var(--muted);text-align:center;margin:24px 0}
+
+/* スマホ微調整 */
+@media (max-width:520px){ .shelf{ gap:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); } }
