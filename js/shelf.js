@@ -1,10 +1,4 @@
 (() => {
-  // 既存の joinBase があれば流用。無ければ自作。
-  const joinBase = (window.joinBase) ? window.joinBase : (p => {
-    const segs = location.pathname.split('/').filter(Boolean);
-    const base = segs.length ? `/${segs[0]}/` : '/';
-    return /^(https?:)?\/\//.test(p) ? p : base + String(p).replace(/^\/+/, '');
-  });
 
   const STORIES_JSON = joinBase('stories/stories.json');
 
@@ -105,3 +99,4 @@
     }
   })();
 })();
+
