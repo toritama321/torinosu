@@ -64,7 +64,7 @@ body{
 .world-draconis .cover { background: #5c2525; }
 .world-kurokura .cover { background: #2c2c2c; }
 .world-ryukoto .cover  { background: #5a1c6d; }
-.world-anday .cover    { background: #9b3db6; }
+.world-anday .cover    { background: #795085; }
 .world-mm .cover  { background: #2c216d; }
 .world-siryou .cover  { background: #7a611b; }
 .world-dimension .cover  { background: #e6e6e6; color: white;}
@@ -74,4 +74,5 @@ body{
 
 /* スマホ微調整 */
 @media (max-width:520px){ .shelf{ gap:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); } }
+
 
