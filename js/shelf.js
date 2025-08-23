@@ -46,6 +46,7 @@
       title.className = 'book-title';
       title.textContent = s.title;
 
+      console.log(title.textContent);
       cover.appendChild(title);
       a.appendChild(cover);
 
@@ -90,3 +91,4 @@
     }
   })();
 })();
+
