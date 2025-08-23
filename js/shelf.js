@@ -1,5 +1,4 @@
 (() => {
-
   const STORIES_JSON = joinBase('stories/stories.json');
 
   const $  = (s, r=document) => r.querySelector(s);
@@ -37,27 +36,19 @@
 
     items.forEach(s => {
       const a = document.createElement('a');
-      a.className = 'book';
-      a.href = s.path ? joinBase(s.path.replace(/^\/+/, '')) : '#';
-      a.setAttribute('aria-label', s.title || '作品');
+      a.className = `book world-${s.world}`;
+      a.href = joinBase(s.path);
 
       const cover = document.createElement('div');
       cover.className = 'cover';
-      const img = new Image();
-      img.alt = s.title || '';
-      img.loading = 'lazy'; img.decoding = 'async';
-      img.src = s.cover ? joinBase(s.cover.replace(/^\/+/, '')) : joinBase('img/cover-placeholder.webp');
-      cover.appendChild(img);
 
-      const title = document.createElement('div');
-      title.className = 'title'; title.textContent = s.title || '(無題)';
+      const title = document.createElement('span');
+      title.className = 'book-title';
+      title.textContent = s.title;
 
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      meta.textContent = [fmtDate(s.date), (s.tags||[]).slice(0,2).join('・')].filter(Boolean).join('｜');
+      cover.appendChild(title);
+      a.appendChild(cover);
 
-      a.append(cover, title, meta);
-      frag.append(a);
     });
 
     shelf.append(frag);
@@ -99,4 +90,3 @@
     }
   })();
 })();
-
