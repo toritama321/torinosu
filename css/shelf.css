@@ -30,25 +30,49 @@ body{
 }
 .tab[aria-selected="true"]{background:var(--accent);color:#fff;opacity:1}
 
-/* 本棚グリッド */
-.shelf{
+/* 本棚グリッド ##################################################################*/
+/* 1冊の幅*/
+:root { --book-w: 79px; --book-h-std: 280px;}
+
+.shelf {
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 0;                       /* ← スキマゼロ */
-  padding: 10px 6px 40px;
+  align-items: flex-end;
+  gap: 0;
+  padding: 16px 1px 1px 1px;
+  margin-bottom: 2em;
 
-  /* 棚板の板テクスチャ（お好みで色調整） */
-  background:
-    linear-gradient(#a37b5b 135px, color-mix(in srgb, var(--border) 85%, transparent) 136px) 0 0/100% 170px;
+  /* 棚の奥の色 */
+  background: #807163;  /* 暗めの茶色 */
+
+  /* 外枠（明るい木の枠） */
+  border: 16px ridge #b9afa4;   /* 枠色：明るい木色 */
+  border-radius: 1px;
+
+  /* 内側の影で“奥行き”を出す */
+  box-shadow: inset 0 8px 12px rgba(0,0,0,0.3),
+              inset 0 -6px 8px rgba(0,0,0,0.25);
+
+  /* 繰り返しグラデーションで横線を入れる */
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 calc(var(--book-h-std) + 40px), /* 本＋上下余白分 */
+      rgba(0,0,0,0.3) calc(var(--book-h-std) + 32px),
+      rgba(0,0,0,0.3) calc(var(--book-h-std) + 34px) /* 線の太さ */
+    );
 }
 
-/* 本全体 */
-/* 1冊の幅（数値を変えると詰まり具合が変わる）*/
-:root { --book-w: 112px; --book-h: 280px; }
+/* 本全体 ###################################################################*/
+
+/* 高さ */
+.size-tall  .cover { height: 300px; }
+.size-std   .cover { height: var(--book-h-std); }
+.size-short .cover { height: 260px; }
+
 .book{
   width: var(--book-w);
-  margin: 0;                    /* ← スキマゼロ */
+  margin: 20px 0 0 0; 
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -56,29 +80,40 @@ body{
   align-items: center;
 }
 .cover{
-  width: 100%;
-  height: var(--book-h);
-  border-radius: 6px 6px 2px 2px;
-  display: grid; place-items: center;
-  writing-mode: vertical-rl;
-  font-weight: 800; font-size: 1.05rem;
+  width: var(--book-w);
+  height: var(--book-h-std);
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 上:タイトル、下:日付 */
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.05rem;
   color: #fff;
-  /* 背表紙っぽい陰影（隣とくっつけたときにそれっぽく見える） */
-  background: #3544c7; /* world-xxx で上書きする */
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
-  border: 1px solid color-mix(in srgb, #000 15%, #fff);
+  border: 1px solid #0000007e;
 }
-
-/* タイトル（縦書き） */
-.book-title{ padding-inline: 6px; letter-spacing: .08em; }
+/* タイトル */
+.book-title {
+  margin-top: 20px;
+  writing-mode: vertical-rl;
+}
+/* 日付（小さめフォント） */
+.book-date {
+  writing-mode: horizontal-tb;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 6px;
+  border-top: white solid 1px;
+}
 
 /* 世界ごとの色設定 */
 .world-draconis .cover { background: #5c2525; }
 .world-kurokura .cover { background: #2c2c2c; }
-.world-ryukoto .cover  { background: #5a1c6d; }
-.world-anday .cover    { background: #795085; }
-.world-mm .cover  { background: #2c216d; }
-.world-siryou .cover  { background: #7a611b; }
+.world-ryukoto .cover  { background: #664b6e; }
+.world-anday .cover    { background: #855081; }
+.world-mm .cover  { background: #444772; }
+.world-siryou .cover  { background: #6d6430; }
 .world-dimension .cover  { background: #e6e6e6; color: white;}
 
 /* 空表示 */
@@ -88,8 +123,6 @@ body{
 @media (max-width: 520px){
   :root { --book-w: 96px; --book-h: 240px; }
 }
-
-
 
 
 
