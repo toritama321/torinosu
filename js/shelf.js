@@ -49,7 +49,7 @@
       console.log(title.textContent);
       cover.appendChild(title);
       a.appendChild(cover);
-
+      frag.append(a);
     });
 
     shelf.append(frag);
@@ -91,4 +91,5 @@
     }
   })();
 })();
+
 
