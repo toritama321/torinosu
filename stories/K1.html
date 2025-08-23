@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" data-base=""> 
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!--幅を端末に合わせる-->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/link.css">
+  <title>LINK</title>
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- 初回は見えないけど“高さだけ”は確保しておく -->
+  <div id="header-slot" class="u-invis header-reserve" data-include="header.html"></div>
+
+  <div class="pagebar" role="region" aria-label="ページ見出し">
+    <div class="pagebar__inner">
+      <span class="pagebar__title">強くて脆い貴方へ</span>
+      <span class="pagebar__sep" aria-hidden="true"></span>
+      <span class="pagebar__subtitle">黒色の喰</span>
+    </div>
+    <p>登場人物｜
+        <a href="../world/kurokura.html?tag=kakeri">カケリ</a>、
+        <a href="../world/kurokura.html?tag=koware">コワレ</a>
+    </p>
+  </div>
+  
+  
+
+  <div class="space-vertical"></div>
+  <button id="scrollTopBtn">▲</button>
+  <div id="footer-slot" class="u-invis footer-reserve" data-include="footer.html"></div>
+</body>
+</html>
