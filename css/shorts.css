@@ -14,7 +14,7 @@ body{
   text-decoration: none;
 }
 .chara{
-  margin: 5px auto;
+  margin: 10px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,5 +56,6 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
 
