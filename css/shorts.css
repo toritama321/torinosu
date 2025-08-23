@@ -9,7 +9,7 @@ body{
 .pagebar__title{
   font-weight: bold;
 }
-a{
+.chara-link{
   color: white;
   text-decoration: none;
 }
@@ -56,4 +56,5 @@ a{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
+
 
