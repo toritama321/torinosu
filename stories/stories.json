@@ -2,17 +2,199 @@
   {
     "id": "K1",
     "title": "強くて脆い貴方へ",
-    "date": "2025-04-18",
+    "date": "2023-01-29",
     "tags": ["黒色の喰"],
     "world": "kurokura",
-    "path": "stories/K1.html"
+    "path": "stories/K1.html",
+    "size":"std"
   },
   {
-    "id": "feather",
-    "title": "羽音の手紙",
-    "date": "2025-07-11",
-    "tags": ["安寧の世界"],
-    "world": "anday",
-    "path": "posts/2025-07-羽音の手紙.html"
+    "id": "K2",
+    "title": "急加速",
+    "date": "2023-07-07",
+    "tags": ["黒色の喰"],
+    "world": "kurokura",
+    "path": "stories/K2.html",
+    "size":"short"
+  },
+  {
+    "id": "K3",
+    "title": "愛隔つ",
+    "date": "2022-05-26",
+    "tags": ["黒色の喰"],
+    "world": "kurokura",
+    "path": "stories/K3.html",
+    "size":"short"
+  },
+  {
+    "id": "K4",
+    "title": "天より眺める妖",
+    "date": "2024-04-28",
+    "tags": ["黒色の喰"],
+    "world": "kurokura",
+    "path": "stories/K4.html",
+    "size":"std"
+  },
+  {
+    "id": "K5",
+    "title": "おやすみ、大切なきみ",
+    "date": "2024-05-29",
+    "tags": ["黒色の喰"],
+    "world": "kurokura",
+    "path": "stories/K5.html",
+    "size":"tall"
+  },
+  {
+    "id": "R1",
+    "title": "有り得ないはずの想い",
+    "date": "2022-10-24",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R1.html",
+    "size":"tall"
+  },
+  {
+    "id": "R2",
+    "title": "太陽にはなれない",
+    "date": "2024-07-10",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R2.html",
+    "size":"std"
+  },
+  {
+    "id": "R3",
+    "title": "記憶の中だけでも美しく",
+    "date": "2025-04-20",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R3.html",
+    "size":"tall"
+  },
+  {
+    "id": "R4",
+    "title": "小さくて、温かい",
+    "date": "2025-04-25",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R4.html",
+    "size":"std"
+  },
+  {
+    "id": "R5",
+    "title": "青い炎のフィアンセ",
+    "date": "2025-04-26",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R5.html",
+    "size":"std"
+  },
+  {
+    "id": "R6",
+    "title": "静かな星空",
+    "date": "2025-04-29",
+    "tags": ["龍のコトダマ"],
+    "world": "ryukoto",
+    "path": "stories/R6.html",
+    "size":"short"
+  },
+  {
+    "id": "M1",
+    "title": "亡失の",
+    "date": "2023-07-21",
+    "tags": ["MissingMemory"],
+    "world": "mm",
+    "path": "stories/M1.html",
+    "size":"short"
+  },
+  {
+    "id": "M2",
+    "title": "黄昏の薔薇",
+    "date": "2025-05-30",
+    "tags": ["MissingMemory"],
+    "world": "mm",
+    "path": "stories/M2.html",
+    "size":"std"
+  },
+  {
+    "id": "M3",
+    "title": "冷たい体",
+    "date": "2025-05-31",
+    "tags": ["MissingMemory"],
+    "world": "mm",
+    "path": "stories/M3.html",
+    "size":"short"
+  },
+  {
+    "id": "M4",
+    "title": "深海エモーション",
+    "date": "2025-05-31",
+    "tags": ["MissingMemory"],
+    "world": "mm",
+    "path": "stories/M4.html",
+    "size":"std"
+  },
+  {
+    "id": "S1",
+    "title": "N5528-C（寒空の星）",
+    "date": "2023-12-09",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S1.html",
+    "size":"std"
+  },
+  {
+    "id": "S2",
+    "title": "N5589-C（燻りの星）",
+    "date": "2024-05-29",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S2.html",
+    "size":"std"
+  },
+  {
+    "id": "S3",
+    "title": "高次元資料館",
+    "date": "2024-01-04",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S3.html",
+    "size":"std"
+  },
+  {
+    "id": "S4",
+    "title": "熱と消えた魂",
+    "date": "2024-07-05",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S4.html",
+    "size":"std"
+  },
+  {
+    "id": "S5",
+    "title": "流星",
+    "date": "2024-07-10",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S5.html",
+    "size":"short"
+  },
+  {
+    "id": "S6",
+    "title": "優しさ故に",
+    "date": "2024-07-13",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S6.html",
+    "size":"std"
+  },
+  {
+    "id": "S7",
+    "title": "虹色の星石",
+    "date": "2025-04-14",
+    "tags": ["高次元資料館"],
+    "world": "siryou",
+    "path": "stories/S7.html",
+    "size":"std"
   }
 ]
