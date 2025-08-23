@@ -21,6 +21,20 @@ body{
   color: white;
 }
 
+.sentens{
+  padding: 30px 25px;
+  margin: 20px 15% 0px;
+}
+@media (max-width: 520px){
+  .sentens{
+    padding: 30px 10px;
+    margin: 20px 5% 0px;
+  }
+}
+p{
+  margin-bottom: 20px;
+}
+
 .post-footer a {
   background: #303030;
   border-radius: 3px;
@@ -56,6 +70,3 @@ body{
 .post-footer a:hover:after {
   border-color: #FFF;
 }
-
-
-
