@@ -40,22 +40,38 @@ body{
   padding-top:12px;
 }
 
-/* 本（カバー） */
-.book{
-  display:flex;flex-direction:column;gap:8px;align-items:stretch;
+/* 本全体 */
+.book {
+  display:flex;flex-direction:column;align-items:center;
   text-decoration:none;color:inherit;
 }
-.cover{
-  aspect-ratio: 3/4; border-radius: 12px; overflow:hidden;
-  background: var(--card); box-shadow: var(--shadow);
-  border:1px solid var(--border); display:grid; place-items:center;
+
+/* 表紙デザイン */
+.cover {
+  width: 100px;         /* 本の幅 */
+  height: 280px;        /* 本の高さ */
+  border-radius: 4px;
+  display:flex;justify-content:center;align-items:center;
+  writing-mode: vertical-rl;   /* タイトルを縦書きに */
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  margin-bottom: 8px;
 }
-.cover img{ width:100%; height:100%; object-fit:cover; display:block; }
-.title{ font-weight:800; font-size:1rem; line-height:1.35; }
-.meta{ color:var(--muted); font-size:.88rem; }
+
+/* 世界ごとの色設定 */
+.world-draconis .cover { background: #5c2525; }
+.world-kurokura .cover { background: #2c2c2c; }
+.world-ryukoto .cover  { background: #5a1c6d; }
+.world-anday .cover    { background: #9b3db6; }
+.world-mm .cover  { background: #2c216d; }
+.world-siryou .cover  { background: #7a611b; }
+.world-dimension .cover  { background: #e6e6e6; color: white;}
 
 /* 空表示 */
 .empty{color:var(--muted);text-align:center;margin:24px 0}
 
 /* スマホ微調整 */
 @media (max-width:520px){ .shelf{ gap:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); } }
+
