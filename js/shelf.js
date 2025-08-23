@@ -36,7 +36,9 @@
 
     items.forEach(s => {
       const a = document.createElement('a');
-      a.className = `book world-${s.world}`;
+      a.className = 'book' 
+        + (s.world ? ` world-${s.world}` : '') 
+        + (s.size ? ` size-${s.size}` : ' size-std');
       a.href = joinBase(s.path);
 
       const cover = document.createElement('div');
@@ -46,10 +48,21 @@
       title.className = 'book-title';
       title.textContent = s.title;
 
-      console.log(title.textContent);
-      cover.appendChild(title);
+      // 日付（yy-mm-dd形式に整形）
+      const date = document.createElement('span');
+      date.className = 'book-date';
+      if (s.date) {
+        const d = new Date(s.date);
+        const yy = String(d.getFullYear()).slice(2);
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        date.textContent = `${yy}-${mm}-${dd}`;
+      }
+
+      cover.append(title, date);
       a.appendChild(cover);
-      frag.append(a);
+      frag.appendChild(a);
+
     });
 
     shelf.append(frag);
@@ -68,7 +81,7 @@
       const list = await res.json();
 
       // 新しい順
-      ALL = list.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+      ALL = list.slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
       // タグ一覧
       const tagSet = new Set();
@@ -91,5 +104,3 @@
     }
   })();
 })();
-
-
