@@ -44,24 +44,36 @@ body{
 }
 
 /* 本全体 */
-.book {
-  display:flex;flex-direction:column;align-items:center;
-  text-decoration:none;color:inherit;
+/* 1冊の幅（数値を変えると詰まり具合が変わる）*/
+:root { --book-w: 112px; --book-h: 280px; }
+.book{
+  width: var(--book-w);
+  margin: 0;                    /* ← スキマゼロ */
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cover{
+  width: 100%;
+  height: var(--book-h);
+  border-radius: 6px 6px 2px 2px;
+  display: grid; place-items: center;
+  writing-mode: vertical-rl;
+  font-weight: 800; font-size: 1.05rem;
+  color: #fff;
+  /* 背表紙っぽい陰影（隣とくっつけたときにそれっぽく見える） */
+  background: #3544c7; /* world-xxx で上書きする */
+  box-shadow:
+    inset 6px 0 10px rgba(0,0,0,.25),
+    inset -6px 0 10px rgba(0,0,0,.15),
+    0 3px 6px rgba(0,0,0,.18);
+  border: 1px solid color-mix(in srgb, #000 15%, #fff);
 }
 
-/* 表紙デザイン */
-.cover {
-  width: 100px;         /* 本の幅 */
-  height: 280px;        /* 本の高さ */
-  border-radius: 4px;
-  display:flex;justify-content:center;align-items:center;
-  writing-mode: vertical-rl;   /* タイトルを縦書きに */
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  margin-bottom: 8px;
-}
+/* タイトル（縦書き） */
+.book-title{ padding-inline: 6px; letter-spacing: .08em; }
 
 /* 世界ごとの色設定 */
 .world-draconis .cover { background: #5c2525; }
@@ -77,6 +89,7 @@ body{
 
 /* スマホ微調整 */
 @media (max-width:520px){ .shelf{ gap:16px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); } }
+
 
 
 
