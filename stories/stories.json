@@ -1,18 +1,18 @@
 [
   {
-    "id": "mist",
-    "title": "青の霧",
-    "date": "2025-08-20",
-    "tags": ["ドラゴンの国", "短編"],
-    "path": "posts/2025-08-青の霧.html",
-    "cover": "img/covers/mist.webp"
+    "id": "K1",
+    "title": "強くて脆い貴方へ",
+    "date": "2025-04-18",
+    "tags": ["黒色の喰"],
+    "world": "kurokura",
+    "path": "stories/K1.html"
   },
   {
     "id": "feather",
     "title": "羽音の手紙",
     "date": "2025-07-11",
-    "tags": ["随筆"],
-    "path": "posts/2025-07-羽音の手紙.html",
-    "cover": "img/covers/feather.webp"
+    "tags": ["安寧の世界"],
+    "world": "anday",
+    "path": "posts/2025-07-羽音の手紙.html"
   }
 ]
