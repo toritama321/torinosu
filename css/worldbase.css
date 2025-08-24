@@ -196,6 +196,7 @@ body{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: normal;
 }
 
 /* モーダル ==================================================== */
@@ -391,4 +392,5 @@ body.no-scroll{
   .profile__header{ grid-template-columns: 1fr; }
   .profile__portrait{ justify-self: center; }
   .profile__portrait img{ width:220px }
+
 }
