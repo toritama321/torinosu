@@ -196,7 +196,9 @@ body{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: normal;
+  display: block;       /* インラインだと幅が伸びないのでブロックにする */
+  white-space: normal;  /* nowrap になってると折り返さないので必ず normal */
+  word-break: break-word; /* 長い単語でも無理やり折る */
 }
 
 /* モーダル ==================================================== */
@@ -394,3 +396,4 @@ body.no-scroll{
   .profile__portrait img{ width:220px }
 
 }
+
