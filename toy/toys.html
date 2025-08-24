@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja" data-base=""> 
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!--幅を端末に合わせる-->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/toys.css">
+  <title>TOYS</title>
+  <script src="../js/main.js" defer></script>
+</head>
+
+<body>
+  <div id="header-slot" class="u-invis header-reserve" data-include="header.html"></div>
+
+  <div class="pagebar" role="region" aria-label="ページ見出し">
+    <div class="pagebar__inner">
+      <span class="pagebar__title">TOYS</span>
+      <span class="pagebar__sep" aria-hidden="true"></span>
+      <span class="pagebar__subtitle">おもちゃとかゲーム</span>
+    </div>
+  </div>
+
+  <div class="title" role="region" aria-label="ページ見出し">
+    <span class="title__title">障害物避け</span>
+  </div>
+  <iframe
+    id="game-embed"
+    src="./jump/jump.html"
+    title="障害物避け"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-pointer-lock"
+    allow="fullscreen; gamepad"
+  ></iframe>
+
+  <script>
+    const iframe = document.getElementById('game');
+
+    function fitIframeHeight() {
+        try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        const h = Math.max(
+            doc.documentElement.scrollHeight,
+            doc.body?.scrollHeight || 0
+        );
+        iframe.style.height = h + 'px';
+        } catch { /* クロスオリジンならここはスキップ */ }
+    }
+
+    iframe.addEventListener('load', fitIframeHeight);
+    window.addEventListener('resize', fitIframeHeight);
+  </script>
+
+  <div class="space-vertical"></div>
+  <button id="scrollTopBtn">▲</button>
+  <div id="footer-slot" class="u-invis footer-reserve" data-include="footer.html"></div>
+</body>
+</html>

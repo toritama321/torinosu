@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1"> <!--幅を端末に合わせる-->
+	<title>障害物避け</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+			background-color: #9c9c9c;
+			width: 100%;
+			height: auto;
+			display: block;
+			image-rendering: pixelated;     /* ドット絵をシャキッと */
+			touch-action: manipulation;     /* タップ操作の過剰なズームを抑制 */
+			-webkit-tap-highlight-color: transparent;
+		}
+		.d {
+			top: 10px;
+			right: 10px;
+			font-size: 25px;
+		}
+		.btn {
+			font-size: 15px;
+			padding: 10px 15px;
+			background: rgb(27, 27, 27);
+			color: #ffffff;
+			border-radius: 500px;
+		}
+		.sent{
+			margin: 0;
+			text-align: center;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="gameCanvas" width="560" height="400"></canvas>
+	<img src="img/background.jpg" id="back" style="display: none">
+	<img src="img/stone.png" id="tree" style="display: none">
+	<img src="img/chara1.png" id="chara1" style="display: none">
+	<img src="img/chara2.png" id="chara2" style="display: none">
+	<img src="img/chara3.png" id="chara3" style="display: none">
+	<img src="img/chara9.png" id="chara9" style="display: none">
+	<span class="d"><br>SCORE <span id="score">0</span></span><br>
+	
+	<div class="sent">
+		<button type="button" id="start" class="btn" onclick="start();">START</button>
+		<button type="button" id="reset" class="btn" onclick="reset();">RESTART</button>
+
+		<p class="sent">
+			<span style="font-weight: 900;">＜遊び方＞</span><br>
+			「START」ボタンを押すと開始します。<br>
+			右から石が流れてくるので、黒枠内をクリックして<br>
+			ジャンプで避けてください。
+		</p>
+	</div>
+
+	<script>
+		let canvas = document.getElementById("gameCanvas");
+		let ctx = canvas.getContext("2d");
+		let imgChara = [];
+		let imgBack,imgTree; //画像
+		let score = 0; // スコア
+		let frameCount = 0;
+		let gameSpeed = 0;	//ゲームスピード
+		let lastBox = 0; // 箱生成からの経過フレーム数
+		let index = 0; //キャラコマ送り用
+		let flg = false; //ゲーム中フラグ
+
+		//画像を変数にロードする
+		imgBack = document.getElementById("back")
+		imgTree = document.getElementById("tree")
+		imgChara.push(document.getElementById("chara1"));
+		imgChara.push(document.getElementById("chara2"));
+		imgChara.push(document.getElementById("chara3"));
+		imgChara.push(document.getElementById("chara2"));
+		imgChara.push(document.getElementById("chara9"));
+
+		document.getElementById('reset').style.visibility = 'hidden' //ボタン非表示
+		
+
+		// ゲームオブジェクトの初期化
+		var dino = {
+			x: 20,
+			y: 282,
+			width: 60,
+			height: 60,
+			jumping: false,
+			jumpCount: 0,
+			draw: function() {
+				ctx.drawImage(imgChara[index], this.x, this.y, this.width, this.height);
+				if (frameCount % 5 === 0) {
+					switch(index){
+						case 0:
+							index = 1;
+							break;
+						case 1:
+							index = 2;
+							break;
+						case 2:
+							index = 3;
+							break;
+						case 3:
+							index = 0;
+							break;
+						default:
+					}
+				}
+			},
+			jump: function() {
+				if (!this.jumping) {
+					this.jumping = true;
+					this.jumpCount = 18;
+				}
+			},
+			update: function() {
+				if (this.jumping) {
+					this.y -= this.jumpCount;
+					this.jumpCount -= 1;
+					if (this.y >= 282) {
+						this.y = 282;
+						this.jumping = false;
+					}
+				}
+			}
+		};
+
+		var walls = [];
+
+		// 障害物の生成
+		function generatewall() {
+			var wall = {
+				x: 600,
+				y: 282,
+				width: 40,
+				height: 60,
+				draw: function() {
+					ctx.drawImage(imgTree, this.x, this.y, this.width, this.height);
+				},
+				//障害物移動
+				update: function() {
+					this.x -= 4 + gameSpeed;
+				}
+			};
+			walls.push(wall);
+		}
+
+
+		//リセットボタン
+		function reset(){
+			//障害物削除
+			for (var i = 0; i < walls.length; i++) {
+				walls.splice(0, 5);
+			}
+			score = 0;
+			frameCount = 0;
+			gameSpeed = 0;
+			lastBox = 0;
+			index = 0;
+			document.getElementById('reset').style.visibility = 'hidden' //ボタン非表示
+			requestAnimationFrame(gameLoop);
+		}
+
+
+		// ゲームループ
+		function gameLoop() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.drawImage(imgBack, 0, 0, 560, 400);
+			lastBox++;
+
+			// キー入力の処理
+			canvas.onpointerdown = () => {
+				isMouseDown = true; // マウス押下中
+				dino.jump();
+			};
+
+			// キー入力の処理(スマホ)
+			canvas.ontouchstart = () => {
+				isMouseDown = true; // マウス押下中
+				dino.jump();
+			};
+
+			// オブジェクトの更新と描画
+			dino.update();
+			dino.draw();
+
+			// 障害物の生成
+			if (Math.random() < 0.04 && lastBox-gameSpeed*4 > 80) {
+				lastBox = 0;
+				generatewall();
+			}
+			for (var i = 0; i < walls.length; i++) {
+				walls[i].update();
+				walls[i].draw();
+				if (walls[i].x + walls[i].width < 0) {
+					walls.splice(i, 1);
+				}
+			}
+
+
+
+			// 衝突判定
+			for (var i = 0; i < walls.length; i++) {
+				if (dino.x + 5 < walls[i].x + walls[i].width &&
+					dino.x + dino.width - 5 > walls[i].x &&
+					dino.y - 5 < walls[i].y + walls[i].height &&
+					dino.y + dino.height - 5 > walls[i].y) {
+
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					ctx.drawImage(imgBack, 0, 0, 560, 400);
+					// オブジェクトの更新と描画
+					index = 4;
+					dino.update();
+					dino.draw();
+					for (var i = 0; i < walls.length; i++) {
+						walls[i].update();
+						walls[i].draw();
+						if (walls[i].x + walls[i].width < 0) {
+							walls.splice(i, 1);
+						}
+					}
+
+					ctx.font = "50px 'ＭＳ ゴシック'";
+					ctx.textAlign = "center";
+					ctx.fillText("Game Over", 280, 200);
+					document.getElementById('reset').style.visibility = 'visible' //ボタン表示
+					return false;
+					flg = false;
+				}
+			}
+
+			//スコア
+			frameCount++;
+			if (frameCount % 5 === 0) {
+				score++;
+				document.getElementById("score").textContent = score;
+			}
+
+			//ゲームスピード
+			if(score % 150 === 0){
+				gameSpeed += 0.3;
+			}
+
+			// ゲームループの再帰呼び出し
+			requestAnimationFrame(gameLoop);
+		}
+
+		// ゲームループの開始
+		function start(){
+			flg = true;
+			requestAnimationFrame(gameLoop);
+			document.getElementById('start').style.visibility = 'hidden' //ボタン非表示
+		}
+		
+	</script>
+</body>
+</html>
