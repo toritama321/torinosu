@@ -29,7 +29,8 @@ const WORLD_TO_PAGE = {
   "龍のコトダマ": "ryukoto",
   "安寧のデイドリーム": "anday",
   "MissingMemory": "mm",
-  "高次元資料館": "siryou"
+  "高次元資料館": "siryou",
+  "高次元資料館": "dimension"
 };
 
 function slugWorldToPage(worldName) {
@@ -279,6 +280,7 @@ function refreshLazy() {
     .forEach(img => io ? io.observe(img) : hydrateImg(img));
 
 }
+
 
 
 
