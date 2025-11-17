@@ -144,7 +144,7 @@ body{
   gap: 12px 10px;  /* 行間12px / 列間10px*/
   margin: 0 auto;
   justify-items: center;
-  align-items: center;
+  align-items: start;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   max-width: calc(120px * 5 + 12px * 4); /* ← 4列に制限したい場合 */
 }
@@ -152,7 +152,6 @@ body{
 /* アイコン */
 .char {
   width: 120px;
-  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,9 +195,10 @@ body{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: block;       /* インラインだと幅が伸びないのでブロックにする */
-  white-space: normal;  /* nowrap になってると折り返さないので必ず normal */
-  word-break: break-word; /* 長い単語でも無理やり折る */
+  display: block;
+  white-space: normal;
+  word-break: break-word;
+  text-decoration: none;
 }
 
 /* モーダル ==================================================== */
