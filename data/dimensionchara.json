@@ -83,7 +83,7 @@
             "id":"furutori",
             "img":"../img/Dimension/Furutori.webp",
             "name":"フルトリ",
-            "nameEn":"Ran",
+            "nameEn":"Furutori",
             "sex":"そんな概念はない",
             "age":"あらゆる時空と同じ",
             "height":"159cm",
@@ -428,4 +428,5 @@
     }
   ]
 }
+
 
