@@ -157,11 +157,20 @@ footer {
 
 /* === ボックス ========================= */
 .box{
-  padding: 30px 25px;
   margin: 20px 20% 0px;
   background: white;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-  border-radius: 10px;/*角の丸み*/
+  border-radius: 5px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+}
+@media (max-width: 600px) {
+  .box{
+    margin: 20px 5% 0px;
+    background: white;
+    border-radius: 5px;
+    padding: 24px 28px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  }
 }
 
 /* === 空白 ========================= */
