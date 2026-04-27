@@ -26,6 +26,11 @@ body{
   outline: none;
 }
 .logo-caption { margin-top: 2px; font-size: .95rem; color: #333; }
+@media (max-width: 600px) {
+  .logo-card {
+    margin: 16px 5%;
+  }
+}
 
 .logo-card__D {
   display: block;
@@ -39,6 +44,11 @@ body{
   color: inherit;                  /* 文字色を親に合わせる */
   text-decoration: none;           /* 下線消し */
   transition: transform .12s ease, box-shadow .12s ease;
+}
+@media (max-width: 600px) {
+  .logo-card__D {
+    margin: 16px 5%;
+  }
 }
 .logo-card__D:hover,
 .logo-card__D:focus-visible {
