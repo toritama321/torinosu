@@ -1,25 +1,20 @@
-// ベースパス（リポ名に合わせる）
-const BASE_PATH = '/torinosu/';
-
-// 安全にくっつける関数
+// サイトルートからのパスにそろえる関数
 function withBase(path) {
   if (!path) return '';
-  // すでに http:// や /torinosu/ で始まってたらそのまま
-  if (/^(https?:|\/torinosu\/)/.test(path)) return path;
-  // ../ を消して BASE_PATH にくっつける
-  return BASE_PATH + path.replace(/^(\.\/|\.\.\/)+/, '');
+  if (/^(https?:|mailto:|tel:|#)/.test(path)) return path;
+  return window.joinBase ? joinBase(path) : path.replace(/^\/+/, '');
 }
 
 // 設定　########################################################################
 // JSONファイル
 const JSON_SOURCES = [
-  "/torinosu/data/dracochara.json",
-  "/torinosu/data/kurochara.json",
-  "/torinosu/data/ryukotochara.json",
-  "/torinosu/data/andaychara.json",
-  "/torinosu/data/mmchara.json",
-  "/torinosu/data/siryouchara.json",
-  "/torinosu/data/dimensionchara.json"
+  "data/dracochara.json",
+  "data/kurochara.json",
+  "data/ryukotochara.json",
+  "data/andaychara.json",
+  "data/mmchara.json",
+  "data/siryouchara.json",
+  "data/dimensionchara.json"
 ];
 
 // ページファイル名 のマップ（必要に応じて追加）
@@ -42,8 +37,7 @@ function buildHref(item) {
   const page  = slugWorldToPage(world);
   const id    = encodeURIComponent(item.id || item.name);
   // ハッシュは1個しか使えないので、"&"でパラメータを繋ぐ
-  console.log('ジャンプ先URL：',`/torinosu/world/${page}.html#tab=chars&char=${id}`);
-  return `/torinosu/world/${page}.html#tab=chars&char=${id}`;
+  return withBase(`world/${page}.html#tab=chars&char=${id}`);
 }
 
 // タグ生成　########################################################################
@@ -132,7 +126,7 @@ function collectTags(list) {
 // JSONロード　########################################################################
 async function loadAll() {
   const lists = await Promise.all(JSON_SOURCES.map(async (url) => {
-    const res = await fetch(url);
+    const res = await fetch(withBase(url));
     if (!res.ok) throw new Error(`JSON取得失敗: ${url}`);
     const j = await res.json();
 
