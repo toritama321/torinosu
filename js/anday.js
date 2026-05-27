@@ -2,16 +2,11 @@
 const RAW_HASH_AT_BOOT = location.hash;
 console.log('[BOOT HASH]', RAW_HASH_AT_BOOT);
 
-// ベースパス（リポ名に合わせる）
-const BASE_PATH = '/torinosu/';
-
-// 安全にくっつける関数
+// サイトルートからのパスにそろえる関数
 function withBase(path) {
   if (!path) return '';
-  // すでに http:// や /torinosu/ で始まってたらそのまま
-  if (/^(https?:|\/torinosu\/)/.test(path)) return path;
-  // ../ を消して BASE_PATH にくっつける
-  return BASE_PATH + path.replace(/^(\.\/|\.\.\/)+/, '');
+  if (/^(https?:|mailto:|tel:|#)/.test(path)) return path;
+  return window.joinBase ? joinBase(path) : path.replace(/^\/+/, '');
 }
 
 // ===== Tabs: 世界設定 / キャラクター =======================================================
