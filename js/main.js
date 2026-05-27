@@ -1,15 +1,18 @@
-// GitHub Pagesでは、ルートが「https://...github.io/」になる。
-// ルート相対パスを書く場合は、/<リポジトリ名>/を先頭につける必要がある。
+// GitHub Pagesでもローカルでも動くように、main.jsの場所からサイトルートを自動判定する。
+const MAIN_SCRIPT_URL = new URL(document.currentScript?.src || "js/main.js", document.baseURI);
+const SITE_ROOT_URL = new URL("../", MAIN_SCRIPT_URL);
 
-// html要素からdata-baseを取得
-const SITE_BASE = document.documentElement.dataset.base || "";
+// サイトルートからのパスに変換する。
+function joinBase(path = "") {
+  if (!path) return SITE_ROOT_URL.pathname;
+  if (/^(https?:|mailto:|tel:|#)/.test(path)) return path;
 
-// パス組立
-function joinBase(path) {
-  const b = SITE_BASE.endsWith("/") ? SITE_BASE.slice(0, -1) : SITE_BASE; // data-base末尾スラッシュを取り除く
-  const p = path.startsWith("/") ? path.slice(1) : path;  // 引数先頭スラッシュを取り除く
-  return b ? `${b}/${p}` : p; // 「<data-base>/<引数>」を返す
+  const cleanPath = String(path).replace(/^(\.\/|\.\.\/|\/)+/, "");
+  const url = new URL(cleanPath, SITE_ROOT_URL);
+  return url.pathname + url.search + url.hash;
 }
+
+window.joinBase = joinBase;
 
 // 現在ページのURL取得
 function currentPage() {
