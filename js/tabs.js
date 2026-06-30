@@ -179,6 +179,82 @@ function createCharButton(m, jbase) {
   const modal = document.getElementById('charModal');
   if (!modal) return;
   let lastFocus = null;
+  let galleryItems = [];
+  let galleryIndex = 0;
+
+  function normalizeGalleryItem(item) {
+    if (typeof item === 'string') return { src: item, alt: '' };
+    return {
+      src: item?.src || item?.img || item?.url || '',
+      alt: item?.alt || item?.caption || ''
+    };
+  }
+
+  function renderGallery(data = {}) {
+    const root = document.getElementById('pGallery');
+    const img = document.getElementById('pGalleryImg');
+    const caption = document.getElementById('pGalleryCaption');
+    const dots = document.getElementById('pGalleryDots');
+    if (!root || !img || !dots) return;
+
+    galleryItems = Array.isArray(data.gallery)
+      ? data.gallery.map(normalizeGalleryItem).filter(item => item.src)
+      : [];
+    galleryIndex = 0;
+    root.hidden = galleryItems.length === 0;
+
+    if (!galleryItems.length) {
+      img.removeAttribute('src');
+      img.alt = '';
+      if (caption) {
+        caption.textContent = '';
+        caption.hidden = true;
+      }
+      dots.replaceChildren();
+      return;
+    }
+
+    showGalleryImage(0, data.name || '');
+  }
+
+  function showGalleryImage(index, fallbackAlt = '') {
+    const img = document.getElementById('pGalleryImg');
+    const caption = document.getElementById('pGalleryCaption');
+    const prev = document.getElementById('pGalleryPrev');
+    const next = document.getElementById('pGalleryNext');
+    const dots = document.getElementById('pGalleryDots');
+    if (!img || !dots || !galleryItems.length) return;
+
+    galleryIndex = (index + galleryItems.length) % galleryItems.length;
+    const current = galleryItems[galleryIndex];
+    img.src = withBase(current.src);
+    img.alt = current.alt || fallbackAlt;
+    if (caption) {
+      caption.textContent = current.alt || '';
+      caption.hidden = !current.alt;
+    }
+
+    const hasMultiple = galleryItems.length > 1;
+    if (prev) {
+      prev.hidden = !hasMultiple;
+      prev.disabled = !hasMultiple;
+    }
+    if (next) {
+      next.hidden = !hasMultiple;
+      next.disabled = !hasMultiple;
+    }
+
+    dots.replaceChildren();
+    galleryItems.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'profile-gallery__dot';
+      dot.type = 'button';
+      dot.dataset.galleryIndex = String(i);
+      dot.setAttribute('aria-label', 'Image ' + (i + 1));
+      dot.setAttribute('aria-current', i === galleryIndex ? 'true' : 'false');
+      dots.appendChild(dot);
+    });
+  }
 
   function openModal(data = {}) {
     // モーダル要素を都度取得（スコープ問題を回避）
@@ -292,6 +368,8 @@ function createCharButton(m, jbase) {
     }
 
     // 表示
+    renderGallery(data);
+
     const closer = modal.querySelector('.modal__close');
     modal.hidden = false;
     
@@ -332,6 +410,19 @@ function createCharButton(m, jbase) {
     if (e.target.matches('[data-close], .modal__overlay')) closeModal();
   });
 
+  document.getElementById('pGalleryPrev')?.addEventListener('click', () => {
+    showGalleryImage(galleryIndex - 1);
+  });
+
+  document.getElementById('pGalleryNext')?.addEventListener('click', () => {
+    showGalleryImage(galleryIndex + 1);
+  });
+
+  document.getElementById('pGalleryDots')?.addEventListener('click', (e) => {
+    const dot = e.target.closest('[data-gallery-index]');
+    if (!dot) return;
+    showGalleryImage(Number(dot.dataset.galleryIndex));
+  });
   // ESCで閉じる・Tabでフォーカストラップ（簡易）
   document.addEventListener('keydown', (e)=>{
     if (modal.hidden) return;
@@ -405,8 +496,4 @@ function openFromInitialHash() {
 }
 
 // 初期化の“かなり早い段階”で呼ぶ（リストを描画するコードの直後でもOK）
-
 document.addEventListener('DOMContentLoaded', openFromInitialHash);
-
-
-
