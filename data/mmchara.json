@@ -354,7 +354,7 @@
                 ],
             "tags":["MissingMemory","性別不明","髪色：黄","瞳色：赤","身長：200～"],
             "crop":{},
-            "gallery":[{"src": "../img/MM/other/mirurierayato1.webp","alt": "人型"}]
+            "gallery":[{"src": "../img/MM/other/mirurierayato_1.webp","alt": "人型"}]
         }
       ]
     }
