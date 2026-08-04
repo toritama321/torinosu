@@ -21,35 +21,21 @@
     </div>
   </div>
 
-  <div class="title" role="region" aria-label="ページ見出し">
-    <span class="title__title">障害物避け</span>
+  <h3>ボタンを押すとページに飛ぶよ。</h3>
+
+  <div class="link-grid">
+    <a href="./jump/jump.html" class="link-card">
+        <strong>障害物避け</strong>
+        <span>クリックで障害物を<br>避けるゲーム</span>
+    </a>
   </div>
-  <iframe
-    id="game-embed"
-    src="./jump/jump.html"
-    title="障害物避け"
-    loading="lazy"
-    sandbox="allow-scripts allow-same-origin allow-pointer-lock"
-    allow="fullscreen; gamepad"
-  ></iframe>
 
-  <script>
-    const iframe = document.getElementById('game');
-
-    function fitIframeHeight() {
-        try {
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
-        const h = Math.max(
-            doc.documentElement.scrollHeight,
-            doc.body?.scrollHeight || 0
-        );
-        iframe.style.height = h + 'px';
-        } catch { /* クロスオリジンならここはスキップ */ }
-    }
-
-    iframe.addEventListener('load', fitIframeHeight);
-    window.addEventListener('resize', fitIframeHeight);
-  </script>
+  <div class="link-grid">
+    <a href="./paret.html" class="link-card">
+        <strong>画像カラパレ</strong>
+        <span>画像からカラー<br>パレットを生成します</span>
+    </a>
+  </div>
 
   <div class="space-vertical"></div>
   <button id="scrollTopBtn">▲</button>
