@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>画像からカラパレ</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../../css/base.css">
+	<link rel="stylesheet" href="../../css/toys.css">
+	<title>TOYS</title>
+	<script src="../../js/main.js" defer></script>
+
+	<style>
+		.sent{
+			margin: auto;
+			text-align: center;
+			display: block;
+		}
+		* {
+		box-sizing: border-box;
+		}
+
+		body{
+		font-family: sans-serif ;
+		background-color: #dbe5f0;
+		}
+
+		input[type="file"] {
+		display: block;
+		margin: 20px auto;
+		text-align: center;
+		}
+
+		.preview {
+		display: none;
+		max-width: 100%;
+		max-height: 420px;
+		margin-top: 20px;
+		border-radius: 12px;
+		object-fit: contain;
+		}
+
+		.status {
+		min-height: 24px;
+		margin: 16px 0;
+		color: #555;
+		text-align: center;
+		}
+
+		.palette {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 12px;
+		margin-top: 24px;
+		margin: 10px;
+		}
+
+		.color {
+		overflow: hidden;
+		min-height: 130px;
+		padding: 0;
+		border: 1px solid #ddd;
+		border-radius: 12px;
+		background: white;
+		cursor: pointer;
+		}
+
+		.color-preview {
+		height: 84px;
+		}
+
+		.color-code {
+		display: block;
+		padding: 12px 8px;
+		font-family: monospace;
+		font-size: 15px;
+		text-align: center;
+		}
+
+		.color:hover {
+		transform: translateY(-2px);
+		}
+
+		.color:focus-visible {
+		outline: 3px solid #333;
+		outline-offset: 2px;
+		}
+
+		canvas {
+		display: none;
+		border: 1px solid black;
+		width: 560px;
+		height: auto;
+		margin: auto;
+		}
+
+		@media (max-width: 600px) {
+		.palette {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="header-slot" class="u-invis header-reserve" data-include="header.html"></div>
+
+	<div class="pagebar" role="region" aria-label="ページ見出し">
+		<div class="pagebar__inner">
+		<span class="pagebar__title">TOYS</span>
+		<span class="pagebar__sep" aria-hidden="true"></span>
+		<span class="pagebar__subtitle">おもちゃとかゲーム</span>
+		</div>
+	</div>
+
+	<main class="container">
+		<input
+		id="fileInput"
+		type="file"
+		accept="image/png,image/jpeg,image/webp,image/gif"
+		>
+
+		<img
+		id="preview"
+		class="preview"
+		alt="アップロードした画像のプレビュー"
+		>
+
+		<p id="status" class="status" aria-live="polite"></p>
+
+		<section
+		id="palette"
+		class="palette"
+		aria-label="生成されたカラーパレット"
+		></section>
+
+		<canvas id="canvas"></canvas>
+
+		<p class="sent">
+			<span style="font-weight: 900;">＜遊び方＞</span><br>
+			「ファイルの選択」ボタンから、画像をアップロードしてください。<br>
+			8色のカラーパレットを生成します。<br>
+			※アップロードした画像はサーバには保存されません。
+		</p>
+		<br>
+		<br>
+
+		<div class="button">
+			<a href="toys.html">戻る</a>
+		</div>
+	</main>
+
+  <script>
+    "use strict";
+
+    const PALETTE_SIZE = 8;
+    const MAX_ANALYSIS_SIZE = 180;
+    const MAX_KMEANS_ITERATIONS = 20;
+
+    const fileInput = document.getElementById("fileInput");
+    const preview = document.getElementById("preview");
+    const paletteElement = document.getElementById("palette");
+    const statusElement = document.getElementById("status");
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d", {
+      willReadFrequently: true
+    });
+
+    let currentObjectUrl = null;
+
+    fileInput.addEventListener("change", handleFileSelect);
+
+    async function handleFileSelect(event) {
+      const file = event.target.files?.[0];
+
+      paletteElement.replaceChildren();
+
+      if (!file) {
+        preview.style.display = "none";
+        statusElement.textContent = "";
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        statusElement.textContent = "画像ファイルを選択してください。";
+        return;
+      }
+
+      if (currentObjectUrl) {
+        URL.revokeObjectURL(currentObjectUrl);
+      }
+
+      currentObjectUrl = URL.createObjectURL(file);
+
+      statusElement.textContent = "画像を読み込んでいます……";
+      preview.src = currentObjectUrl;
+      preview.style.display = "block";
+
+      try {
+        const image = await loadImage(currentObjectUrl);
+
+        statusElement.textContent = "色を解析しています……";
+
+        // 描画更新を一度ブラウザに反映してから重い処理を行う
+        await new Promise(requestAnimationFrame);
+
+        const pixels = getImagePixels(image);
+
+        if (pixels.length === 0) {
+          throw new Error("解析できるピクセルがありません。");
+        }
+
+        const colors = createPalette(pixels, PALETTE_SIZE);
+
+        renderPalette(colors);
+
+        statusElement.textContent =
+          `${colors.length}色のカラーパレットを生成しました。`;
+      } catch (error) {
+        console.error(error);
+        statusElement.textContent =
+          `カラーパレットを生成できませんでした: ${error.message}`;
+      }
+    }
+
+    function loadImage(source) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(
+          new Error("画像の読み込みに失敗しました。")
+        );
+
+        image.src = source;
+      });
+    }
+
+    function getImagePixels(image) {
+      const scale = Math.min(
+        MAX_ANALYSIS_SIZE / image.naturalWidth,
+        MAX_ANALYSIS_SIZE / image.naturalHeight,
+        1
+      );
+
+      const width = Math.max(
+        1,
+        Math.round(image.naturalWidth * scale)
+      );
+
+      const height = Math.max(
+        1,
+        Math.round(image.naturalHeight * scale)
+      );
+
+      canvas.width = width;
+      canvas.height = height;
+
+      context.clearRect(0, 0, width, height);
+      context.drawImage(image, 0, 0, width, height);
+
+      const imageData = context.getImageData(
+        0,
+        0,
+        width,
+        height
+      );
+
+      const data = imageData.data;
+      const pixels = [];
+
+      for (let index = 0; index < data.length; index += 4) {
+        const red = data[index];
+        const green = data[index + 1];
+        const blue = data[index + 2];
+        const alpha = data[index + 3];
+
+        // ほぼ透明なピクセルは無視する
+        if (alpha < 128) {
+          continue;
+        }
+
+        pixels.push([red, green, blue]);
+      }
+
+      return pixels;
+    }
+
+    function createPalette(pixels, requestedColorCount) {
+      const uniquePixels = removeDuplicatePixels(pixels);
+      const colorCount = Math.min(
+        requestedColorCount,
+        uniquePixels.length
+      );
+
+      if (colorCount === 0) {
+        return [];
+      }
+
+      /*
+       * 初期中心色を選ぶ。
+       * 最初は画像内で比較的よく見られる色、
+       * 以降は既存の中心色から最も離れた色を選ぶ。
+       */
+      let centers = initializeCenters(
+        pixels,
+        uniquePixels,
+        colorCount
+      );
+
+      let assignments = new Uint16Array(pixels.length);
+
+      for (
+        let iteration = 0;
+        iteration < MAX_KMEANS_ITERATIONS;
+        iteration++
+      ) {
+        assignments = assignPixelsToCenters(pixels, centers);
+
+        const updatedCenters = calculateCenters(
+          pixels,
+          assignments,
+          centers
+        );
+
+        const movement = calculateCenterMovement(
+          centers,
+          updatedCenters
+        );
+
+        centers = updatedCenters;
+
+        // 中心色がほとんど動かなくなったら終了
+        if (movement < 1) {
+          break;
+        }
+      }
+
+      assignments = assignPixelsToCenters(pixels, centers);
+
+      const clusterCounts = new Array(centers.length).fill(0);
+
+      for (const centerIndex of assignments) {
+        clusterCounts[centerIndex]++;
+      }
+
+      return centers
+        .map((center, index) => ({
+          rgb: center.map(value => Math.round(value)),
+          count: clusterCounts[index]
+        }))
+        .filter(color => color.count > 0)
+        .sort((a, b) => b.count - a.count);
+    }
+
+    function removeDuplicatePixels(pixels) {
+      const colorMap = new Map();
+
+      for (const [red, green, blue] of pixels) {
+        /*
+         * 完全な24bit色をキーにする。
+         * (R << 16) | (G << 8) | B
+         */
+        const key = (red << 16) | (green << 8) | blue;
+
+        if (!colorMap.has(key)) {
+          colorMap.set(key, [red, green, blue]);
+        }
+      }
+
+      return [...colorMap.values()];
+    }
+
+    function initializeCenters(
+      allPixels,
+      uniquePixels,
+      colorCount
+    ) {
+      const centers = [];
+
+      // 最初の中心色には平均色から遠すぎない色を選ぶ
+      const average = calculateAverageColor(allPixels);
+
+      let firstCenter = uniquePixels[0];
+      let firstDistance = Infinity;
+
+      for (const pixel of uniquePixels) {
+        const distance = colorDistanceSquared(pixel, average);
+
+        if (distance < firstDistance) {
+          firstDistance = distance;
+          firstCenter = pixel;
+        }
+      }
+
+      centers.push([...firstCenter]);
+
+      while (centers.length < colorCount) {
+        let selectedPixel = null;
+        let greatestDistance = -1;
+
+        for (const pixel of uniquePixels) {
+          let nearestCenterDistance = Infinity;
+
+          for (const center of centers) {
+            const distance = colorDistanceSquared(pixel, center);
+
+            if (distance < nearestCenterDistance) {
+              nearestCenterDistance = distance;
+            }
+          }
+
+          if (nearestCenterDistance > greatestDistance) {
+            greatestDistance = nearestCenterDistance;
+            selectedPixel = pixel;
+          }
+        }
+
+        if (!selectedPixel) {
+          break;
+        }
+
+        centers.push([...selectedPixel]);
+      }
+
+      return centers;
+    }
+
+    function calculateAverageColor(pixels) {
+      let redTotal = 0;
+      let greenTotal = 0;
+      let blueTotal = 0;
+
+      for (const [red, green, blue] of pixels) {
+        redTotal += red;
+        greenTotal += green;
+        blueTotal += blue;
+      }
+
+      return [
+        redTotal / pixels.length,
+        greenTotal / pixels.length,
+        blueTotal / pixels.length
+      ];
+    }
+
+    function assignPixelsToCenters(pixels, centers) {
+      const assignments = new Uint16Array(pixels.length);
+
+      for (
+        let pixelIndex = 0;
+        pixelIndex < pixels.length;
+        pixelIndex++
+      ) {
+        const pixel = pixels[pixelIndex];
+
+        let nearestCenterIndex = 0;
+        let nearestDistance = Infinity;
+
+        for (
+          let centerIndex = 0;
+          centerIndex < centers.length;
+          centerIndex++
+        ) {
+          const distance = colorDistanceSquared(
+            pixel,
+            centers[centerIndex]
+          );
+
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCenterIndex = centerIndex;
+          }
+        }
+
+        assignments[pixelIndex] = nearestCenterIndex;
+      }
+
+      return assignments;
+    }
+
+    function calculateCenters(
+      pixels,
+      assignments,
+      previousCenters
+    ) {
+      const totals = previousCenters.map(() => ({
+        red: 0,
+        green: 0,
+        blue: 0,
+        count: 0
+      }));
+
+      for (
+        let pixelIndex = 0;
+        pixelIndex < pixels.length;
+        pixelIndex++
+      ) {
+        const centerIndex = assignments[pixelIndex];
+        const [red, green, blue] = pixels[pixelIndex];
+        const total = totals[centerIndex];
+
+        total.red += red;
+        total.green += green;
+        total.blue += blue;
+        total.count++;
+      }
+
+      return totals.map((total, index) => {
+        if (total.count === 0) {
+          return [...previousCenters[index]];
+        }
+
+        return [
+          total.red / total.count,
+          total.green / total.count,
+          total.blue / total.count
+        ];
+      });
+    }
+
+    function calculateCenterMovement(oldCenters, newCenters) {
+      let movement = 0;
+
+      for (let index = 0; index < oldCenters.length; index++) {
+        movement += colorDistanceSquared(
+          oldCenters[index],
+          newCenters[index]
+        );
+      }
+
+      return movement;
+    }
+
+    function colorDistanceSquared(colorA, colorB) {
+      const redDifference = colorA[0] - colorB[0];
+      const greenDifference = colorA[1] - colorB[1];
+      const blueDifference = colorA[2] - colorB[2];
+
+      return (
+        redDifference ** 2 +
+        greenDifference ** 2 +
+        blueDifference ** 2
+      );
+    }
+
+    function renderPalette(colors) {
+      paletteElement.replaceChildren();
+
+      for (const color of colors) {
+        const [red, green, blue] = color.rgb;
+        const hex = rgbToHex(red, green, blue);
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "color";
+        button.title = `${hex}をコピー`;
+        button.setAttribute(
+          "aria-label",
+          `${hex}をクリップボードにコピー`
+        );
+
+        const colorPreview = document.createElement("span");
+        colorPreview.className = "color-preview";
+        colorPreview.style.display = "block";
+        colorPreview.style.backgroundColor = hex;
+
+        const colorCode = document.createElement("span");
+        colorCode.className = "color-code";
+        colorCode.textContent = hex;
+
+        button.append(colorPreview, colorCode);
+
+        button.addEventListener("click", async () => {
+          const copied = await copyText(hex);
+
+          if (copied) {
+            colorCode.textContent = "コピーしました";
+
+            window.setTimeout(() => {
+              colorCode.textContent = hex;
+            }, 1000);
+          }
+        });
+
+        paletteElement.appendChild(button);
+      }
+    }
+
+    function rgbToHex(red, green, blue) {
+      return (
+        "#" +
+        [red, green, blue]
+          .map(value => {
+            return Math.max(0, Math.min(255, value))
+              .toString(16)
+              .padStart(2, "0");
+          })
+          .join("")
+          .toUpperCase()
+      );
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        // file://などでClipboard APIが使えない場合の代替処理
+        const textarea = document.createElement("textarea");
+
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        const succeeded = document.execCommand("copy");
+
+        textarea.remove();
+
+        return succeeded;
+      }
+    }
+  </script>
+	
+</body>
+</html>
