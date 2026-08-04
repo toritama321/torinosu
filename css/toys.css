@@ -27,3 +27,94 @@ body{
   margin-inline: auto;          /* 水平中央！ */
   border: 0;
 }
+
+/* ============================ */
+
+h3 {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 2%;
+  text-align: center;
+  color: #170955;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  margin: 2% 20%;
+}
+.link-card {
+  background: #f6f6ff;
+  border-radius: 10px;
+  border: #213875 solid 2px;
+  margin: auto;
+  margin-bottom: 2%;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  transition: 0.25s;
+  max-width: 40%;
+  min-width: 40%;
+}
+.link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.14);
+}
+.link-card strong {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 8px;
+  color: #213875;
+}
+.link-card span {
+  font-size: 16px;
+  color: #000000;
+}
+@media (max-width: 600px) {
+  .link-grid {
+    margin: 2% 2%;
+  }
+  .link-card {
+    max-width: 70%;
+    min-width: 70%;
+  }
+}
+
+.button a {
+  background: #303030;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em auto;
+  max-width: 280px;
+  padding: 10px 25px;
+  color: #ffffff;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+  text-decoration: none;
+}
+.button a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+.button a:after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #313131;
+  border-right: 3px solid #313131;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
+}
+.button a:hover:after {
+  border-color: #FFF;
+}
