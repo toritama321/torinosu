@@ -263,7 +263,7 @@ function createCharButton(m) {
     // 画像
     const img = document.getElementById('pImg');
     if (img) {
-      img.src = withBase(data.img);
+      img.src = data.img;
       img.alt = data.name || '';
     }
 
