@@ -226,7 +226,7 @@ function createCharButton(m) {
 
     galleryIndex = (index + galleryItems.length) % galleryItems.length;
     const current = galleryItems[galleryIndex];
-    img.src = withBase(current.src);
+    img.src = current.src;
     img.alt = current.alt || fallbackAlt;
     if (caption) {
       caption.textContent = current.alt || '';
