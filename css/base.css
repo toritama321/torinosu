@@ -39,7 +39,7 @@ header {
   header .headline { font-size: clamp(24px, 3vw, 35px); }
   .container { padding: clamp(12px, 2vw, 24px); }
 }
-/* まずは“見えないけど場所は取る” */
+
 .u-invis { visibility: hidden; }
 
 /* だいたいのヘッダー高さを先に確保（自分のヘッダーの実寸に合わせて調整） */
@@ -116,6 +116,12 @@ footer {
   text-align: center;
   color: white;
 }
+@media (max-width: 600px) {
+  .nav-list a {
+    padding: 5px 8px;
+  }
+}
+
 /*#########################################################################################*/
 /* === 黒い帯（ページ見出しバー） ========================= */
 .pagebar{
