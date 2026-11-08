@@ -14,9 +14,9 @@ body{
   padding: 12px;
   margin: 16px auto;
   text-align: center;
-  max-width: 480px;                /* 好きな幅に調整 */
-  color: inherit;                  /* 文字色を親に合わせる */
-  text-decoration: none;           /* 下線消し */
+  max-width: 480px;
+  color: inherit;
+  text-decoration: none;
   transition: transform .12s ease, box-shadow .12s ease;
 }
 .logo-card:hover,
@@ -34,15 +34,15 @@ body{
 
 .logo-card__D {
   display: block;
-  background: #2e2e2e;
+  background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0,0,0,.22);
-  padding: 12px;
   margin: 16px auto;
   text-align: center;
-  max-width: 480px;                /* 好きな幅に調整 */
-  color: inherit;                  /* 文字色を親に合わせる */
-  text-decoration: none;           /* 下線消し */
+  max-width: 480px;
+  height: 120px;
+  color: inherit;
+  text-decoration: none;
   transition: transform .12s ease, box-shadow .12s ease;
 }
 @media (max-width: 600px) {
@@ -57,7 +57,8 @@ body{
   outline: none;
 }
 .logo-caption__D {
-  margin-top: 2px;
-  font-size: 1.3em;
-  color: #ffffff;
+  font-size: 2em;
+  font-weight: 1000;
+  line-height: 120px;
+  color: #202020;
 }
