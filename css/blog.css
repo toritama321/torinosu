@@ -164,16 +164,11 @@ blockquote {
   font-style: italic;
   color: #3a3a3a;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 600px) {
+  .post-header{
+    margin: 20px 5% 0px;
+  }
+  .prose{
+    margin: 20px 5%;
+  }
+}
